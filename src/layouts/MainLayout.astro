@@ -38,9 +38,17 @@ const t_en = translations.en;
     <Footer />
 
     <!-- Données de traduction injectées côté serveur -->
-    <script type="application/json" id="i18n-data">
-      {JSON.stringify({ fr: t_fr, en: t_en })}
-    </script>
+    <script
+      type="application/json"
+      id="i18n-data"
+      is:inline
+      set:html={JSON.stringify({ fr: t_fr, en: t_en })
+        .replace(/</g, '\\u003c')
+        .replace(/>/g, '\\u003e')
+        .replace(/&/g, '\\u0026')
+        .replace(/\u2028/g, '\\u2028')
+        .replace(/\u2029/g, '\\u2029')}
+    ></script>
 
     <script>
       /* ═══════════════════════════════════════
@@ -58,7 +66,13 @@ const t_en = translations.en;
       type Lang = 'fr' | 'en';
 
       const i18nRaw  = document.getElementById('i18n-data')?.textContent ?? '{}';
-      const i18nData = JSON.parse(i18nRaw) as Record<Lang, Record<string, unknown>>;
+      let i18nData: Record<Lang, Record<string, unknown>>;
+      try {
+        i18nData = JSON.parse(i18nRaw) as Record<Lang, Record<string, unknown>>;
+      } catch (err) {
+        console.error('[i18n] JSON parse failed', err);
+        i18nData = { fr: {}, en: {} };
+      }
 
       function getLang(): Lang {
         return (localStorage.getItem('nal-lang') as Lang) ?? 'fr';
