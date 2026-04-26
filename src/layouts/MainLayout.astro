@@ -1,0 +1,142 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { translations } from '../i18n/translations';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Nal Consulting',
+  description = 'Développement web & SEO, reporting & data analytics, automatisations et agents IA.',
+} = Astro.props;
+
+const t_fr = translations.fr;
+const t_en = translations.en;
+---
+
+<!doctype html>
+<html lang="fr" data-lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Données de traduction injectées côté serveur -->
+    <script type="application/json" id="i18n-data">
+      {JSON.stringify({ fr: t_fr, en: t_en })}
+    </script>
+
+    <script>
+      /* ═══════════════════════════════════════
+         INTERSECTION OBSERVER — reveal au scroll
+         ═══════════════════════════════════════ */
+      const revealObserver = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+      /* ═══════════════════════════════════════
+         SYSTÈME I18N
+         ═══════════════════════════════════════ */
+      type Lang = 'fr' | 'en';
+
+      const i18nRaw  = document.getElementById('i18n-data')?.textContent ?? '{}';
+      const i18nData = JSON.parse(i18nRaw) as Record<Lang, Record<string, unknown>>;
+
+      function getLang(): Lang {
+        return (localStorage.getItem('nal-lang') as Lang) ?? 'fr';
+      }
+
+      function setLang(lang: Lang) {
+        localStorage.setItem('nal-lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('data-lang', lang);
+        applyTranslations(lang);
+        updateLangSwitcher(lang);
+      }
+
+      /* Applique toutes les traductions via data-i18n="clé.sous.clé" */
+      function applyTranslations(lang: Lang) {
+        const t = i18nData[lang] as Record<string, unknown>;
+
+        document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n')!;
+          const val = resolveKey(t, key);
+          if (typeof val === 'string') el.textContent = val;
+        });
+
+        document.querySelectorAll<HTMLElement>('[data-i18n-html]').forEach((el) => {
+          const key = el.getAttribute('data-i18n-html')!;
+          const val = resolveKey(t, key);
+          if (typeof val === 'string') el.innerHTML = val;
+        });
+
+        document.querySelectorAll<HTMLElement>('[data-i18n-placeholder]').forEach((el) => {
+          const key = el.getAttribute('data-i18n-placeholder')!;
+          const val = resolveKey(t, key);
+          if (typeof val === 'string') (el as HTMLInputElement | HTMLTextAreaElement).placeholder = val;
+        });
+
+        document.querySelectorAll<HTMLAnchorElement | HTMLButtonElement>('[data-i18n-href]').forEach((el) => {
+          const key = el.getAttribute('data-i18n-href')!;
+          const val = resolveKey(t, key);
+          if (typeof val === 'string' && el instanceof HTMLAnchorElement) el.href = val;
+        });
+      }
+
+      function resolveKey(obj: Record<string, unknown>, key: string): unknown {
+        return key.split('.').reduce<unknown>((acc, k) => {
+          if (acc && typeof acc === 'object') return (acc as Record<string, unknown>)[k];
+          return undefined;
+        }, obj);
+      }
+
+      function updateLangSwitcher(lang: Lang) {
+        const btn = document.getElementById('langBtn');
+        if (!btn) return;
+        const flagFr = btn.querySelector<HTMLImageElement>('.lang-flag--fr');
+        const flagEn = btn.querySelector<HTMLImageElement>('.lang-flag--en');
+        const label  = btn.querySelector<HTMLSpanElement>('.lang-label');
+        if (lang === 'fr') {
+          if (flagFr) flagFr.style.display = 'block';
+          if (flagEn) flagEn.style.display = 'none';
+          if (label)  label.textContent = 'FR';
+        } else {
+          if (flagFr) flagFr.style.display = 'none';
+          if (flagEn) flagEn.style.display = 'block';
+          if (label)  label.textContent = 'EN';
+        }
+      }
+
+      /* Bouton switcher */
+      document.getElementById('langBtn')?.addEventListener('click', () => {
+        setLang(getLang() === 'fr' ? 'en' : 'fr');
+      });
+
+      /* Init au chargement */
+      document.addEventListener('DOMContentLoaded', () => {
+        const lang = getLang();
+        setLang(lang);
+        // Relancer reveal au cas où des éléments auraient été ajoutés dynamiquement
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+      });
+    </script>
+  </body>
+</html>

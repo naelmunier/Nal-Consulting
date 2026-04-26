@@ -1,0 +1,252 @@
+---
+const pathname = Astro.url.pathname;
+---
+
+<header class="header" id="header">
+  <div class="container header__inner">
+
+    <!-- Logo -->
+    <a href="/" class="header__logo" aria-label="Nal Consulting">
+      <img src="/assets/logo.png" alt="Nal Consulting" height="44" />
+    </a>
+
+    <!-- Nav desktop -->
+    <nav class="header__nav" aria-label="Navigation principale">
+      <ul class="header__nav-list">
+        <li><a href="/"               class={`header__nav-link ${pathname === '/'               ? 'active' : ''}`} data-i18n="nav.home">Accueil</a></li>
+        <li><a href="/nos-expertises" class={`header__nav-link ${pathname.startsWith('/nos-expertises') ? 'active' : ''}`}>Nos Services</a></li>
+        <li><a href="/devis"          class={`header__nav-link ${pathname === '/devis'          ? 'active' : ''}`} data-i18n="nav.quote">Devis</a></li>
+        <li><a href="/qui-sommes-nous" class={`header__nav-link ${pathname === '/qui-sommes-nous' ? 'active' : ''}`}>Notre Histoire</a></li>
+        <li><a href="/contact"        class={`header__nav-link ${pathname === '/contact'        ? 'active' : ''}`} data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Actions : langue + CTA -->
+    <div class="header__actions">
+      <!-- Switcher langue -->
+      <button class="lang-switcher" id="langBtn" aria-label="Changer la langue" title="Switch language">
+        <img src="/assets/icons/france.png"  alt="Français"  class="lang-flag lang-flag--fr" width="22" height="16" />
+        <img src="/assets/icons/english.png" alt="English"   class="lang-flag lang-flag--en" width="22" height="16" style="display:none;" />
+        <span class="lang-label">FR</span>
+        <svg class="lang-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+
+      <!-- CTA -->
+      <a href="/devis" class="btn btn--primaire header__cta" data-i18n="nav.cta">Demander un devis</a>
+    </div>
+
+    <!-- Burger mobile -->
+    <button class="header__burger" id="burgerBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Menu mobile -->
+  <div class="header__mobile" id="mobileMenu" aria-hidden="true">
+    <ul class="header__mobile-list">
+      <li><a href="/"               class="header__mobile-link" data-i18n="nav.home">Accueil</a></li>
+      <li><a href="/nos-expertises" class="header__mobile-link">Nos Services</a></li>
+      <li><a href="/devis"          class="header__mobile-link" data-i18n="nav.quote">Devis</a></li>
+      <li><a href="/qui-sommes-nous" class="header__mobile-link">Notre Histoire</a></li>
+      <li><a href="/contact"        class="header__mobile-link" data-i18n="nav.contact">Contact</a></li>
+      <li class="header__mobile-sep">
+        <button class="lang-switcher lang-switcher--mobile" id="langBtnMobile" aria-label="Changer la langue">
+          <img src="/assets/icons/france.png"  alt="Français" class="lang-flag lang-flag--fr" width="22" height="16" />
+          <img src="/assets/icons/english.png" alt="English"  class="lang-flag lang-flag--en" width="22" height="16" style="display:none;" />
+          <span class="lang-label">FR</span>
+        </button>
+        <a href="/devis" class="btn btn--primaire" style="flex:1; justify-content:center;" data-i18n="nav.cta">Demander un devis</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const header    = document.getElementById('header')!;
+  const burger    = document.getElementById('burgerBtn')!;
+  const menu      = document.getElementById('mobileMenu')!;
+  const langBtnM  = document.getElementById('langBtnMobile');
+
+  /* Scroll glass */
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('header--scrolled', window.scrollY > 50);
+  }, { passive: true });
+
+  /* Burger */
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    burger.classList.toggle('open', !open);
+    menu.classList.toggle('open', !open);
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach((l) => l.addEventListener('click', () => {
+    burger.setAttribute('aria-expanded', 'false');
+    burger.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  /* Sync switcher mobile avec le bouton principal */
+  langBtnM?.addEventListener('click', () => {
+    document.getElementById('langBtn')?.click();
+    // Sync visuel mobile
+    const mainBtn  = document.getElementById('langBtn')!;
+    const frM  = langBtnM.querySelector<HTMLImageElement>('.lang-flag--fr')!;
+    const enM  = langBtnM.querySelector<HTMLImageElement>('.lang-flag--en')!;
+    const lblM = langBtnM.querySelector<HTMLSpanElement>('.lang-label')!;
+    const frMain = mainBtn.querySelector<HTMLImageElement>('.lang-flag--fr')!;
+    frM.style.display  = frMain.style.display;
+    enM.style.display  = frMain.style.display === 'block' ? 'none' : 'block';
+    lblM.textContent   = frMain.style.display === 'block' ? 'FR' : 'EN';
+  });
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 1000;
+    padding: .85rem 0;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, .07);
+    transition: box-shadow .4s, padding .4s, border-color .4s;
+  }
+
+  .header--scrolled {
+    padding: .65rem 0;
+    box-shadow: 0 2px 32px rgba(0, 0, 0, .08);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .header__logo img {
+    height: 44px; width: auto;
+    border-radius: 0;
+    transition: opacity .2s;
+  }
+  .header__logo:hover img { opacity: .82; }
+
+  /* Nav */
+  .header__nav { flex: 1; display: flex; justify-content: center; }
+  .header__nav-list { display: flex; list-style: none; gap: .25rem; }
+
+  .header__nav-link {
+    display: block;
+    padding: .5rem .95rem;
+    font-size: .93rem;
+    font-weight: 500;
+    color: rgba(26, 31, 46, .65);
+    border-radius: .7rem;
+    transition: color .2s, background .2s;
+  }
+  .header__nav-link:hover { color: var(--gris-fonce); background: rgba(0,0,0,.05); }
+  .header__nav-link.active { color: var(--bleu-vif); font-weight: 600; }
+
+  /* Actions */
+  .header__actions { display: flex; align-items: center; gap: .85rem; flex-shrink: 0; }
+  .header__cta { padding: .62rem 1.4rem; font-size: .88rem; }
+
+  /* Lang switcher */
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .45rem .8rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(0,0,0,.14);
+    background: rgba(0,0,0,.04);
+    color: rgba(26,31,46,.8);
+    cursor: pointer;
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    transition: background .2s, border-color .2s;
+  }
+  .lang-switcher:hover {
+    background: rgba(160,180,222,.15);
+    border-color: var(--bleu);
+  }
+  .lang-flag { border-radius: .25rem; object-fit: cover; }
+  .lang-arrow { opacity: .6; }
+
+  /* Burger */
+  .header__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .5rem;
+    margin-left: auto;
+  }
+  .header__burger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--gris-fonce); border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+  }
+  .header__burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .header__burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .header__burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile menu */
+  .header__mobile {
+    display: none;
+    position: fixed;
+    inset: 68px 0 0;
+    background: rgba(7,13,26,.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 1.5rem 1.5rem 3rem;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform .4s cubic-bezier(.25,.46,.45,.94);
+  }
+  .header__mobile.open { transform: translateX(0); }
+
+  .header__mobile-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    padding-top: .75rem;
+  }
+
+  .header__mobile-link {
+    display: block;
+    padding: .95rem 1.1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,.75);
+    border-radius: var(--rayon);
+    transition: color .2s, background .2s;
+  }
+  .header__mobile-link:hover { color: var(--bleu-clair); background: rgba(160,180,222,.08); }
+
+  .header__mobile-sep {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(160,180,222,.1);
+  }
+
+  .lang-switcher--mobile { flex-shrink: 0; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .header__nav, .header__actions { display: none; }
+    .header__burger, .header__mobile { display: flex; }
+    .header__mobile { display: block; }
+  }
+</style>

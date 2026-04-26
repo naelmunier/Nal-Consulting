@@ -1,0 +1,1357 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { translations } from '../i18n/translations';
+const t = translations.fr;
+
+const outils = [
+  { src: '/assets/outils/claude.png',      alt: 'Claude' },
+  { src: '/assets/outils/gpt.png',         alt: 'GPT' },
+  { src: '/assets/outils/python.png',      alt: 'Python' },
+  { src: '/assets/outils/powerbi.png',     alt: 'Power BI' },
+  { src: '/assets/outils/postgresql.png',  alt: 'PostgreSQL' },
+  { src: '/assets/outils/github.png',      alt: 'GitHub' },
+  { src: '/assets/outils/docker.png',      alt: 'Docker' },
+  { src: '/assets/outils/vs-code.png',     alt: 'VS Code' },
+  { src: '/assets/outils/n8n.svg',         alt: 'n8n' },
+  { src: '/assets/outils/hostinger.svg',   alt: 'Hostinger' },
+];
+---
+
+<MainLayout title="Nal Consulting — Transformation digitale">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero__blob hero__blob--1" aria-hidden="true"></div>
+    <div class="hero__blob hero__blob--2" aria-hidden="true"></div>
+    <div class="hero__blob hero__blob--3" aria-hidden="true"></div>
+    <div class="hero__dots" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__badge animate-in" style="animation-delay:.1s">
+        <span class="badge badge--sombre" data-i18n="hero.badge">{t.hero.badge}</span>
+      </div>
+      <h1 class="hero__titre animate-in" style="animation-delay:.2s">
+        <span data-i18n="hero.title.0">{t.hero.title[0]}</span><br />
+        <span class="hero__gradient" data-i18n="hero.title.1">{t.hero.title[1]}</span>
+      </h1>
+<div class="hero__ctas animate-in" style="animation-delay:.38s">
+        <a href="/devis" class="btn btn--primaire">
+          <span data-i18n="hero.ctaPrimary">{t.hero.ctaPrimary}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ═══ MARQUEE sur fond bleu ═══ -->
+    <div class="marquee-section">
+      <!-- Label word-reveal, au-dessus du séparateur -->
+      <div class="marquee-label" aria-label="EN UTILISANT LES MEILLEURS OUTILS DU MARCHÉ">
+        {['EN', 'UTILISANT', 'LES', 'MEILLEURS', 'OUTILS', 'DU', 'MARCHÉ'].map((word, wi) => (
+          <span class="marquee-word" style={`animation-delay:${0.15 + wi * 0.1}s`}>{word}</span>
+        ))}
+      </div>
+      <!-- Séparateur -->
+      <div class="marquee-sep" aria-hidden="true"></div>
+      <div class="marquee-track-wrap" aria-hidden="true">
+        <div class="marquee-track">
+          {[...outils, ...outils].map((o) => (
+            <div class={`marquee-item ${o.alt === 'n8n' ? 'marquee-item--large' : ''}`}>
+              <img src={o.src} alt={o.alt} width="48" height="48" loading="lazy" />
+              <span>{o.alt}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section class="section services-section" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="services.eyebrow">{t.services.eyebrow}</span>
+        <h2 class="titre-section">
+          <span data-i18n="services.title.0">{t.services.title[0]}</span><br />
+          <span data-i18n="services.title.1">{t.services.title[1]}</span>
+        </h2>
+        <p class="sous-titre" data-i18n="services.subtitle">{t.services.subtitle}</p>
+      </div>
+
+      <div class="services-grid">
+        {[
+          { ...t.services.items[0], href: '/nos-expertises', idx: 0 },
+          { ...t.services.items[1], href: '/nos-expertises', idx: 1 },
+          { ...t.services.items[2], href: '/nos-expertises', idx: 2 },
+        ].map((s, i) => (
+          <article class="svc-carte reveal" style={`transition-delay:${i * 0.14}s`}>
+            <div class="svc-carte__top">
+              <!-- Visualisation custom par expertise -->
+              <div class="svc-carte__visual">
+                {i === 0 && (
+                  <canvas id="miniGlobe" class="mini-canvas" width="110" height="110" aria-hidden="true"></canvas>
+                )}
+                {i === 1 && (
+                  <div class="mini-bars-wrap" aria-hidden="true">
+                    {[55,78,47,92,68,85].map((h, bi) => (
+                      <div class="mini-bar" style={`--h:${h}%;--delay:${bi*0.12}s`}></div>
+                    ))}
+                  </div>
+                )}
+                {i === 2 && (
+                  <canvas id="miniBrain" class="mini-canvas" width="110" height="110" aria-hidden="true"></canvas>
+                )}
+              </div>
+              <span class="svc-carte__num" data-i18n={`services.items.${i}.num`}>{s.num}</span>
+            </div>
+            <div class="svc-carte__encart">
+              <h3 class="svc-carte__titre" data-i18n={`services.items.${i}.title`}>{s.title}</h3>
+              <p class="svc-carte__desc"   data-i18n={`services.items.${i}.desc`}>{s.desc}</p>
+            </div>
+            <div class="svc-tags">
+              {s.points.map((p, pi) => (
+                <span class="svc-tag" data-i18n={`services.items.${i}.points.${pi}`}>{p}</span>
+              ))}
+            </div>
+            <a href={s.href} class="svc-carte__link svc-carte__link--shimmer">
+              <span data-i18n="services.learnMore">{t.services.learnMore}</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <div class="svc-carte__bar" aria-hidden="true"></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TIMELINE VERTICALE ═══ -->
+  <section class="section section--gris process-section" id="process">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="process.eyebrow">{t.process.eyebrow}</span>
+        <h2 class="titre-section process-title-reveal" aria-label="Simple. Transparent. Efficace.">
+          {['Simple.', 'Transparent.', 'Efficace.'].map((w, wi) => (
+            <span class="proc-word" data-delay={wi * 0.18}>{w}</span>
+          ))}
+        </h2>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="timeline__line" id="timelineLine" aria-hidden="true">
+          <div class="timeline__line-fill" id="timelineFill"></div>
+        </div>
+
+        {t.process.steps.map((step, i) => {
+          const nodeKw = ['Brief', 'Devis', 'Build', 'Live'];
+          const stepIcons = [
+            '/assets/notre-approche/decouverte.svg',
+            '/assets/notre-approche/proposition.svg',
+            '/assets/notre-approche/realisation.png',
+            '/assets/notre-approche/livraison.png',
+          ];
+          return (
+            <div class={`timeline__step timeline__step--${i % 2 === 0 ? 'left' : 'right'}`}
+                 data-step={i} id={`step-${i}`}>
+              <!-- Nœud central : ring progress animé + numéro -->
+              <div class="timeline__node" aria-hidden="true">
+                <svg class="timeline__ring" viewBox="0 0 80 80">
+                  <circle class="timeline__ring-bg"   cx="40" cy="40" r="34"/>
+                  <circle class="timeline__ring-fill" cx="40" cy="40" r="34"/>
+                </svg>
+                <span class="timeline__node-num">{String(i + 1).padStart(2, '0')}</span>
+              </div>
+
+              <!-- Carte premium avec faisceau lumineux + flottement -->
+              <div class="timeline__card">
+                <div class="timeline__card-inner">
+                  <!-- Faisceau animé autour de la carte -->
+                  <div class="timeline__card-beam" aria-hidden="true"></div>
+
+                  <div class="timeline__card-head">
+                    <span class="timeline__card-icon">
+                      <img src={stepIcons[i]} alt="" width="24" height="24" loading="lazy" />
+                    </span>
+                    <span class="timeline__card-kw">{nodeKw[i]}</span>
+                  </div>
+                  <p class="timeline__step-label" data-i18n={`process.steps.${i}.title`}>{step.title}</p>
+                  <p class="timeline__step-desc"  data-i18n={`process.steps.${i}.desc`}>{step.desc}</p>
+                  <div class="timeline__card-glow" aria-hidden="true"></div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ POURQUOI NAL — KPIs ═══ -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="why-header section-head reveal">
+        <span class="eyebrow" data-i18n="why.eyebrow">{t.why.eyebrow}</span>
+        <h2 class="titre-section">
+          <span data-i18n="why.title.0">{t.why.title[0]}</span><br />
+          <span data-i18n="why.title.1">{t.why.title[1]}</span>
+        </h2>
+      </div>
+
+      <div class="kpi-grid">
+        {[
+          { target: 24,  suffix: 'h',  label: 'Réponse garantie',      i18n: 'why.kpi.response'  },
+          { target: 15,  suffix: '+',  label: 'Clients servis',         i18n: 'why.kpi.clients'   },
+          { target: 100, suffix: '%',  label: 'Satisfaction client',    i18n: 'why.kpi.sat'       },
+        ].map((kpi, ki) => (
+          <div class="kpi-card reveal" style={`transition-delay:${ki * 0.12}s`}
+               data-target={kpi.target} data-suffix={kpi.suffix}>
+            <div class="kpi-val">
+              <span class="kpi-num">0</span><span class="kpi-suffix">{kpi.suffix}</span>
+            </div>
+            <p class="kpi-label" data-i18n={kpi.i18n}>{kpi.label}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="why-cta reveal" style="text-align:center; margin-top:3rem;">
+        <a href="/qui-sommes-nous" class="btn btn--outline" data-i18n="why.separator">{t.why.separator}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA FINALE ═══ -->
+  <section class="section cta-final">
+    <div class="cta-final__blob cta-final__blob--1" aria-hidden="true"></div>
+    <div class="cta-final__blob cta-final__blob--2" aria-hidden="true"></div>
+    <div class="container cta-final__inner">
+      <div class="reveal" style="text-align:center;">
+        <span class="eyebrow eyebrow--blanc" data-i18n="cta.eyebrow">{t.cta.eyebrow}</span>
+        <h2 class="titre-section titre-section--clair" style="margin:.5rem 0 .8rem;">
+          <span data-i18n="cta.title.0">{t.cta.title[0]}</span><br />
+          <span data-i18n="cta.title.1">{t.cta.title[1]}</span>
+        </h2>
+        <p class="sous-titre sous-titre--clair" style="margin:.8rem auto 0; text-align:center;"
+           data-i18n="cta.desc">{t.cta.desc}</p>
+        <div class="cta-final__btns">
+          <a href="/devis"   class="btn btn--primaire"      data-i18n="cta.primary">{t.cta.primary}</a>
+          <a href="/contact" class="btn btn--outline-blanc" data-i18n="cta.secondary">{t.cta.secondary}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</MainLayout>
+
+<script>
+  /* ── TIMELINE SCROLL ANIMATION ── */
+  const timeline = document.getElementById('timeline');
+  const fill     = document.getElementById('timelineFill');
+  const steps    = Array.from(document.querySelectorAll<HTMLElement>('.timeline__step'));
+
+  if (timeline && fill) {
+    const updateTimeline = () => {
+      const rect = timeline.getBoundingClientRect();
+      const winH  = window.innerHeight;
+      const progress = Math.max(0, Math.min(1,
+        (winH * 0.6 - rect.top) / rect.height
+      ));
+      fill.style.height = `${progress * 100}%`;
+    };
+
+    window.addEventListener('scroll', updateTimeline, { passive: true });
+    updateTimeline();
+  }
+
+  /* IntersectionObserver — révèle chaque étape (ring + carte) */
+  const stepObs = new IntersectionObserver(
+    (entries) => entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        stepObs.unobserve(e.target);
+      }
+    }),
+    { threshold: 0.35 }
+  );
+  steps.forEach((s) => stepObs.observe(s));
+
+  /* ── PROCESS TITLE WORD REVEAL ── */
+  const procTitle = document.querySelector('.process-title-reveal');
+  if (procTitle) {
+    const procObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        procTitle.querySelectorAll<HTMLElement>('.proc-word').forEach(w => {
+          const delay = parseFloat(w.dataset.delay ?? '0');
+          setTimeout(() => w.classList.add('proc-word--vis'), delay * 1000);
+        });
+        procObs.disconnect();
+      }
+    }, { threshold: 0.5 });
+    procObs.observe(procTitle);
+  }
+
+  /* ── MINI GLOBE CANVAS (carte web) ── */
+  const miniGlobe = document.getElementById('miniGlobe') as HTMLCanvasElement;
+  if (miniGlobe) {
+    const ctx = miniGlobe.getContext('2d')!;
+    const W = 110, H = 110, cx = 55, cy = 55, R = 44;
+    let rot = 0;
+
+    function drawMiniGlobe() {
+      ctx.clearRect(0, 0, W, H);
+
+      /* Fond de sphère — plus bleu/vivid */
+      const bg = ctx.createRadialGradient(cx - 16, cy - 16, 4, cx, cy, R);
+      bg.addColorStop(0,   'rgba(107,145,212,.18)');
+      bg.addColorStop(0.45,'rgba(74,112,192,.10)');
+      bg.addColorStop(1,   'rgba(7,13,26,.4)');
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.fillStyle = bg; ctx.fill();
+
+      /* Contour bleu */
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(107,145,212,.8)'; ctx.lineWidth = 0.8; ctx.stroke();
+
+      /* Clip sur la sphère */
+      ctx.save();
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.clip();
+
+      /* Parallèles */
+      [-55, -28, 0, 28, 55].forEach(lat => {
+        const y    = cy + R * Math.sin(lat * Math.PI / 180);
+        const rLat = R * Math.cos(lat * Math.PI / 180);
+        ctx.beginPath();
+        ctx.ellipse(cx, y, rLat, rLat * 0.26, 0, 0, Math.PI * 2);
+        ctx.strokeStyle = lat === 0 ? 'rgba(107,180,255,.75)' : 'rgba(107,180,255,.45)';
+        ctx.lineWidth = lat === 0 ? 1 : 0.7;
+        ctx.stroke();
+      });
+
+      /* Méridiens rotatifs */
+      for (let lon = 0; lon < 180; lon += 30) {
+        const a  = (lon * Math.PI / 180) + rot;
+        const rx = Math.abs(R * Math.cos(a));
+        const op = ((Math.cos(a) + 1) / 2) * 0.55 + 0.12;
+        ctx.beginPath();
+        ctx.ellipse(cx, cy, rx, R, 0, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(107,160,255,${op.toFixed(2)})`;
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+
+      /* Reflet lumineux */
+      const hl = ctx.createRadialGradient(cx - 16, cy - 17, 1, cx - 8, cy - 8, R * 0.65);
+      hl.addColorStop(0, 'rgba(255,255,255,.10)');
+      hl.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = hl; ctx.fillRect(0, 0, W, H);
+      ctx.restore();
+
+      /* Halo externe bleu */
+      const halo = ctx.createRadialGradient(cx, cy, R * 0.88, cx, cy, R * 1.28);
+      halo.addColorStop(0, 'rgba(107,145,212,.12)');
+      halo.addColorStop(1, 'rgba(107,145,212,0)');
+      ctx.beginPath(); ctx.arc(cx, cy, R * 1.28, 0, Math.PI * 2);
+      ctx.fillStyle = halo; ctx.fill();
+
+      rot += 0.018;
+      requestAnimationFrame(drawMiniGlobe);
+    }
+    drawMiniGlobe();
+  }
+
+  /* ── MINI BRAIN CANVAS (carte IA) ── */
+  const miniBrain = document.getElementById('miniBrain') as HTMLCanvasElement;
+  if (miniBrain) {
+    const ctx = miniBrain.getContext('2d')!;
+    const W = 110, H = 110;
+
+    /* Nœuds disposés en forme de cerveau */
+    const nodes = [
+      { x: 55, y: 20 },   /* sommet */
+      { x: 30, y: 30 },   /* haut-gauche */
+      { x: 80, y: 30 },   /* haut-droite */
+      { x: 18, y: 52 },   /* milieu-gauche */
+      { x: 55, y: 44 },   /* centre */
+      { x: 92, y: 52 },   /* milieu-droite */
+      { x: 32, y: 68 },   /* bas-gauche */
+      { x: 78, y: 68 },   /* bas-droite */
+      { x: 55, y: 82 },   /* bas-centre */
+      { x: 22, y: 85 },   /* très bas-gauche */
+      { x: 88, y: 85 },   /* très bas-droite */
+    ];
+
+    /* Connexions entre nœuds */
+    const edges: [number, number][] = [
+      [0,1],[0,2],[1,2],
+      [1,3],[2,5],
+      [1,4],[2,4],[3,4],[5,4],
+      [3,6],[5,7],
+      [4,6],[4,7],[4,8],
+      [6,8],[7,8],
+      [6,9],[7,10],
+      [9,8],[10,8],
+    ];
+
+    /* Chaque nœud a une phase de pulsation décalée */
+    const phases = nodes.map((_, i) => (i / nodes.length) * Math.PI * 2);
+    let t = 0;
+
+    function drawMiniBrain() {
+      ctx.clearRect(0, 0, W, H);
+
+      /* Fond doux */
+      const bg = ctx.createRadialGradient(55, 55, 5, 55, 55, 52);
+      bg.addColorStop(0, 'rgba(107,145,212,.07)');
+      bg.addColorStop(1, 'rgba(160,180,222,.02)');
+      ctx.beginPath(); ctx.arc(55, 55, 52, 0, Math.PI * 2);
+      ctx.fillStyle = bg; ctx.fill();
+
+      /* Connexions */
+      edges.forEach(([a, b]) => {
+        const na = nodes[a], nb = nodes[b];
+        /* Pulse qui voyage le long de l'arête */
+        const pulse = (Math.sin(t * 1.8 + phases[a]) + 1) / 2;
+        const op    = 0.12 + pulse * 0.38;
+        ctx.beginPath();
+        ctx.moveTo(na.x, na.y); ctx.lineTo(nb.x, nb.y);
+        ctx.strokeStyle = `rgba(107,145,212,${op.toFixed(2)})`;
+        ctx.lineWidth = 0.9;
+        ctx.stroke();
+      });
+
+      /* Points lumineux voyageant sur les connexions */
+      edges.forEach(([a, b]) => {
+        const na = nodes[a], nb = nodes[b];
+        const progress = ((t * 0.6 + phases[a]) % (Math.PI * 2)) / (Math.PI * 2);
+        const px = na.x + (nb.x - na.x) * progress;
+        const py = na.y + (nb.y - na.y) * progress;
+        ctx.beginPath(); ctx.arc(px, py, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(160,180,222,.55)';
+        ctx.fill();
+      });
+
+      /* Nœuds */
+      nodes.forEach((n, i) => {
+        const pulse = (Math.sin(t + phases[i]) + 1) / 2;
+        const r     = 2.8 + pulse * 1.4;
+        const alpha = 0.45 + pulse * 0.55;
+
+        /* Halo */
+        const halo = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 3.2);
+        halo.addColorStop(0, `rgba(107,145,212,${(alpha * 0.3).toFixed(2)})`);
+        halo.addColorStop(1, 'rgba(107,145,212,0)');
+        ctx.beginPath(); ctx.arc(n.x, n.y, r * 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = halo; ctx.fill();
+
+        /* Cœur */
+        ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(160,180,222,${alpha.toFixed(2)})`;
+        ctx.fill();
+      });
+
+      t += 0.12;
+      requestAnimationFrame(drawMiniBrain);
+    }
+    drawMiniBrain();
+  }
+
+  /* ── KPI COUNTERS (démarrage explicite à 0) ── */
+  const kpiCards = document.querySelectorAll<HTMLElement>('.kpi-card');
+  // Reset initial visuel à 0 pour tous les compteurs
+  kpiCards.forEach((c) => {
+    const numEl = c.querySelector<HTMLElement>('.kpi-num');
+    if (numEl) numEl.textContent = '0';
+  });
+  const kpiObs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const card   = e.target as HTMLElement;
+      const numEl  = card.querySelector<HTMLElement>('.kpi-num');
+      if (!numEl || numEl.dataset.done) return;
+      numEl.dataset.done = '1';
+      numEl.textContent = '0';
+      const target  = parseInt(card.dataset.target ?? '0', 10);
+      const dur     = 1800;
+      const start   = performance.now();
+      function tick(now: number) {
+        const p = Math.min((now - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        numEl!.textContent = String(Math.round(ease * target));
+        if (p < 1) requestAnimationFrame(tick);
+        else numEl!.textContent = String(target);
+      }
+      requestAnimationFrame(tick);
+      kpiObs.unobserve(e.target);
+    });
+  }, { threshold: 0.5 });
+  kpiCards.forEach((c) => kpiObs.observe(c));
+
+  /* ── TITRES BLUR-IN ── */
+  const blurTitles = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        (e.target as HTMLElement).classList.add('titre-clear');
+        blurTitles.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll<HTMLElement>('.titre-section').forEach((t) => blurTitles.observe(t));
+
+  /* ── TITRES CARTES EXPERTISE — typing animation mot par mot ── */
+  function splitTitleIntoWords(el: HTMLElement) {
+    if (el.dataset.split === '1') return;
+    const text = el.textContent || '';
+    el.textContent = '';
+    const words = text.split(/(\s+)/);
+    words.forEach((w) => {
+      if (/^\s+$/.test(w)) {
+        el.appendChild(document.createTextNode(w));
+      } else if (w.length) {
+        const span = document.createElement('span');
+        span.className = 'typing-word';
+        span.textContent = w;
+        el.appendChild(span);
+      }
+    });
+    el.dataset.split = '1';
+  }
+
+  const cartTitles = document.querySelectorAll<HTMLElement>('.svc-carte__titre');
+  cartTitles.forEach(splitTitleIntoWords);
+
+  // Observer la carte parente (qui reçoit .visible) — déclenche le typing en cascade
+  const cardTypingObs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const card = e.target as HTMLElement;
+      if (card.dataset.typed) return;
+      card.dataset.typed = '1';
+      const titre = card.querySelector<HTMLElement>('.svc-carte__titre');
+      if (!titre) return;
+      const words = titre.querySelectorAll<HTMLElement>('.typing-word');
+      words.forEach((w, i) => {
+        setTimeout(() => w.classList.add('is-typed'), 120 + i * 110);
+      });
+      cardTypingObs.unobserve(card);
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll<HTMLElement>('.svc-carte').forEach((c) => cardTypingObs.observe(c));
+</script>
+
+<style>
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--gradient-hero);
+  overflow: hidden;
+}
+
+.hero__blob {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; filter: blur(130px);
+}
+.hero__blob--1 { width:720px; height:720px; top:-220px; right:-190px; background:rgba(160,180,222,.14); animation:float 8s ease-in-out infinite; }
+.hero__blob--2 { width:520px; height:520px; bottom:-160px; left:-160px; background:rgba(107,145,212,.10); animation:float 11s ease-in-out infinite reverse; }
+.hero__blob--3 { width:360px; height:360px; top:48%; left:44%; background:rgba(160,180,222,.06); animation:float 14s ease-in-out infinite; }
+
+.hero__dots {
+  position:absolute; inset:0;
+  background-image: radial-gradient(circle, rgba(160,180,222,.13) 1px, transparent 1px);
+  background-size: 52px 52px; pointer-events:none;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 72%);
+}
+
+.hero__inner {
+  position:relative; flex:1;
+  text-align:center; max-width:980px; margin:0 auto;
+  padding-top:2.4rem; padding-bottom:.4rem;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:1rem;
+}
+
+.hero__badge { margin-bottom:.4rem; }
+
+.hero__titre {
+  font-size: clamp(2.25rem, 5.22vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing:-.045em; line-height:1.06;
+  margin-bottom:.6rem;
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #ffffff 20%,
+    #d6e6ff 35%,
+    #A0B4DE 45%,
+    #ffffff 50%,
+    #A0B4DE 55%,
+    #d6e6ff 65%,
+    #ffffff 80%,
+    #ffffff 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: hero-shimmer 3.5s linear infinite;
+}
+@keyframes hero-shimmer {
+  0%   { background-position: 200% 50%; }
+  100% { background-position: -20% 50%; }
+}
+
+.hero__gradient {
+  /* hérite du shimmer du parent .hero__titre */
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__desc {
+  font-size: clamp(1rem,2vw,1.22rem);
+  color:rgba(255,255,255,.72);
+  max-width:580px; margin:0 auto 2.8rem;
+  line-height:1.82;
+}
+
+.hero__ctas {
+  display:flex; gap:1rem; flex-wrap:wrap;
+  justify-content:center; margin-bottom:.2rem;
+}
+
+.hero__stats {
+  display:inline-flex; align-items:center;
+  padding:1.4rem 2.8rem;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(160,180,222,.14);
+  border-radius:var(--rayon-xl);
+  backdrop-filter:blur(14px);
+  flex-wrap:wrap; justify-content:center; gap:0;
+}
+
+.hero__stat { display:flex; flex-direction:column; align-items:center; gap:.2rem; padding:0 2.2rem; }
+.hero__stat-sep { width:1px; height:38px; background:rgba(160,180,222,.18); }
+
+.hero__stat-val {
+  font-size:2rem; font-weight:900; letter-spacing:-.03em;
+  background:var(--gradient-marque);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.hero__stat-label { font-size:.76rem; color:rgba(255,255,255,.5); text-align:center; }
+
+/* ─── MARQUEE (dark, inside hero) ─── */
+.marquee-section {
+  background: transparent;
+  padding: .2rem 0 1.2rem;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.marquee-label {
+  text-align:center;
+  margin-bottom:.8rem;
+  display:flex; justify-content:center; align-items:center;
+  flex-wrap:wrap; gap:.45em;
+  padding: 0 1rem;
+}
+
+/* Séparateur entre label et track */
+.marquee-sep {
+  height: 1px;
+  background: rgba(160,180,222,.08);
+  margin-bottom: 1rem;
+}
+
+/* Word-reveal animation */
+.marquee-word {
+  display: inline-block;
+  font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 900;
+  text-transform: uppercase; letter-spacing: .18em;
+  color: rgba(160,180,222,.88);
+  opacity: 0; transform: translateY(9px);
+  animation: word-pop .45s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+@keyframes word-pop {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.marquee-track-wrap {
+  overflow:hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image:         linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+.marquee-track {
+  display:flex; align-items:center; gap:0;
+  width:max-content;
+  animation: marquee 24s linear infinite;
+}
+
+.marquee-item {
+  display:flex; align-items:center; gap:.85rem;
+  padding:0 2.6rem;
+  font-size:.9rem; font-weight:600;
+  color:rgba(255,255,255,.38);
+  border-right:1px solid rgba(160,180,222,.1);
+  white-space:nowrap;
+  transition:color .3s;
+}
+.marquee-item:hover { color:rgba(160,180,222,.85); }
+
+.marquee-item--large img {
+  width: 62px !important;
+  height: 62px !important;
+}
+
+.marquee-item img {
+  width:40px; height:40px;
+  object-fit:contain; border-radius:0 !important;
+  opacity:.5; transition:opacity .3s, filter .3s;
+  filter:grayscale(20%) brightness(1.4);
+}
+.marquee-item:hover img { opacity:.9; filter:brightness(1.4) grayscale(0); }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── SECTION HEAD ─── */
+.section-head { text-align:center; margin-bottom:4.5rem; }
+.section-head .sous-titre { margin:.9rem auto 0; }
+
+/* ─── TITRES BLUR-IN ─── */
+.titre-section {
+  filter: blur(10px);
+  transition: filter 1s ease .15s;
+}
+.titre-section.titre-clear {
+  filter: blur(0);
+}
+
+/* ─── SERVICES ─── */
+.services-section { background:var(--blanc); }
+
+.services-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem;
+  max-width:1100px; margin:0 auto;
+}
+
+.svc-carte {
+  position:relative; background:var(--blanc);
+  border-radius:var(--rayon-xl); padding:2.4rem;
+  border:1.5px solid var(--gris-light); overflow:hidden;
+  cursor:default;
+  /* Transition douce et progressive pour TOUTES les propriétés */
+  transition:
+    transform .75s cubic-bezier(.23,1,.32,1),
+    box-shadow .75s cubic-bezier(.23,1,.32,1),
+    border-color .75s cubic-bezier(.23,1,.32,1),
+    background .75s cubic-bezier(.23,1,.32,1),
+    background-color .75s cubic-bezier(.23,1,.32,1);
+}
+.svc-carte::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse at 50% -20%, rgba(160,180,222,.12) 0%, transparent 65%);
+  opacity:0; transition:opacity .75s cubic-bezier(.23,1,.32,1);
+  pointer-events:none;
+}
+.svc-carte:hover {
+  transform:translateY(-10px) scale(1.015);
+  box-shadow:0 24px 56px rgba(107,145,212,.2);
+  border-color:rgba(107,145,212,.45);
+}
+.svc-carte:hover::before { opacity:1; }
+
+/* Transitions internes — synchronisées avec le parent pour un effet fluide */
+.svc-carte__titre,
+.svc-carte__desc,
+.svc-carte__num { transition: color .75s cubic-bezier(.23,1,.32,1); }
+.svc-carte__link--shimmer,
+.svc-carte__link--shimmer svg { transition: color .75s cubic-bezier(.23,1,.32,1), stroke .75s cubic-bezier(.23,1,.32,1), -webkit-text-fill-color .75s cubic-bezier(.23,1,.32,1); }
+.svc-tag { transition: background .75s cubic-bezier(.23,1,.32,1), border-color .75s cubic-bezier(.23,1,.32,1), color .75s cubic-bezier(.23,1,.32,1); }
+
+.svc-carte__top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:1.4rem; }
+
+/* Conteneur visual pour mini-visualisations */
+.svc-carte__visual {
+  width:110px; height:110px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:1.2rem; overflow:hidden;
+  transition: transform var(--transition);
+  flex-shrink:0;
+}
+.svc-carte:hover .svc-carte__visual { transform:scale(1.06); }
+
+.mini-canvas { display:block; border-radius:.8rem; }
+
+/* Mini bar chart */
+.mini-bars-wrap {
+  width:110px; height:110px;
+  display:flex; align-items:flex-end; gap:5px;
+  padding:14px 12px 10px;
+  background:linear-gradient(145deg, rgba(160,180,222,.06), rgba(107,145,212,.04));
+  border-radius:.8rem;
+  border:1px solid rgba(160,180,222,.15);
+}
+.mini-bar {
+  flex:1; border-radius:3px 3px 0 0;
+  background:linear-gradient(to top, #4a70c0 0%, #A0B4DE 100%);
+  height:var(--h,50%);
+  animation: mini-bounce 2s ease-in-out var(--delay,0s) infinite alternate;
+  box-shadow:0 0 6px rgba(107,145,212,.3);
+}
+@keyframes mini-bounce {
+  from { height:calc(var(--h) * .6); opacity:.7; }
+  to   { height:var(--h); opacity:1; }
+}
+
+.svc-carte__num {
+  font-size:.72rem; font-weight:800; letter-spacing:.1em;
+  color:rgba(160,180,222,.4);
+}
+
+/* Bloc titre + description (sans encadré, avec filet dégradé à gauche) */
+.svc-carte__encart {
+  position: relative;
+  padding: .2rem 0 .2rem 1.1rem;
+  margin-bottom: 1.4rem;
+}
+.svc-carte__encart::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .2rem; bottom: .2rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg,
+    rgba(160, 180, 222, .9) 0%,
+    rgba(107, 145, 212, .6) 50%,
+    rgba(160, 180, 222, 0) 100%);
+  transition: background .75s cubic-bezier(.23,1,.32,1);
+}
+.svc-carte:hover .svc-carte__encart::before {
+  background: linear-gradient(180deg,
+    #A0B4DE 0%,
+    #6B91D4 50%,
+    rgba(107, 145, 212, .25) 100%);
+  box-shadow: 0 0 12px rgba(160, 180, 222, .4);
+}
+
+.svc-carte__titre {
+  position: relative;
+  font-size: 1.28rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin-bottom: .55rem;
+  line-height: 1.3;
+  /* Bleu foncé en base, shimmer animé */
+  background: linear-gradient(
+    100deg,
+    #0d1830 0%,
+    #1a2e50 30%,
+    #4a70c0 45%,
+    #6B91D4 50%,
+    #4a70c0 55%,
+    #1a2e50 70%,
+    #0d1830 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: svc-titre-shimmer 4s linear infinite;
+}
+@keyframes svc-titre-shimmer {
+  0%   { background-position: 200% 50%; }
+  100% { background-position: -20% 50%; }
+}
+
+/* Typing effect : le titre se "tape" mot par mot quand la carte est révélée */
+.svc-carte__titre .typing-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px);
+  filter: blur(4px);
+  transition:
+    opacity .45s cubic-bezier(.25,.46,.45,.94),
+    transform .45s cubic-bezier(.25,.46,.45,.94),
+    filter .45s cubic-bezier(.25,.46,.45,.94);
+}
+.svc-carte.visible .svc-carte__titre .typing-word.is-typed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.svc-carte__desc {
+  position: relative;
+  font-size: .94rem;
+  color: var(--gris-fonce);
+  opacity: .78;
+  line-height: 1.7;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* Apple-style pill tags for service points */
+.svc-tags {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+  margin-bottom: 1.8rem;
+}
+.svc-tag {
+  display: inline-flex; align-items: center;
+  padding: .28rem .72rem;
+  border-radius: 2rem;
+  font-size: .73rem; font-weight: 600;
+  letter-spacing: .025em;
+  background: rgba(160,180,222,.09);
+  border: 1px solid rgba(160,180,222,.22);
+  color: var(--bleu-moyen);
+}
+.svc-carte:hover .svc-tag {
+  background: rgba(107,145,212,.12);
+  border-color: rgba(107,145,212,.35);
+  color: var(--bleu-vif);
+}
+
+.svc-carte__link {
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-size:.88rem; font-weight:700;
+  transition:gap .25s;
+}
+.svc-carte__link--shimmer {
+  background: linear-gradient(90deg, #A0B4DE 0%, #6B91D4 25%, #4a70c0 50%, #6B91D4 75%, #A0B4DE 100%);
+  background-size:300%;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation: shimmer-link 3s linear infinite;
+}
+@keyframes shimmer-link {
+  from { background-position: 200% center; }
+  to   { background-position: -200% center; }
+}
+.svc-carte__link--shimmer svg { stroke: #6B91D4; }
+.svc-carte__link:hover { gap:.8rem; }
+
+/* Barre animée en bas */
+.svc-carte__bar {
+  position:absolute; bottom:0; left:0; right:0;
+  height:3px;
+  background:var(--gradient-marque);
+  border-radius:0 0 var(--rayon-xl) var(--rayon-xl);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .45s cubic-bezier(.25,.46,.45,.94);
+}
+.svc-carte:hover .svc-carte__bar { transform:scaleX(1); }
+
+/* ─── PROCESS TITLE WORD REVEAL ─── */
+.process-title-reveal { display:flex; gap:.4em; flex-wrap:wrap; justify-content:center; }
+.proc-word {
+  display:inline-block;
+  color: var(--bleu);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  opacity:0; transform:translateY(12px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.proc-word--vis { opacity:1; transform:translateY(0); }
+
+/* ─── TIMELINE — version premium avec ring progress ─── */
+.process-section { overflow:hidden; }
+
+.timeline {
+  position:relative;
+  max-width:920px; margin:0 auto;
+  padding:1.5rem 0 2rem;
+}
+
+/* Ligne centrale */
+.timeline__line {
+  position:absolute; left:50%; transform:translateX(-50%);
+  top:0; bottom:0; width:3px;
+  background:rgba(160,180,222,.12);
+  border-radius:2px;
+}
+.timeline__line-fill {
+  width:100%; height:0;
+  background: linear-gradient(to bottom,
+    #A0B4DE 0%, #6B91D4 40%, #4a70c0 80%, #1a2e50 100%);
+  border-radius:2px;
+  transition:height .2s linear;
+  box-shadow:
+    0 0 10px rgba(107,145,212,.75),
+    0 0 26px rgba(107,145,212,.35);
+}
+
+/* Étape — compactée */
+.timeline__step {
+  display:flex; align-items:center;
+  margin-bottom:2.4rem; position:relative;
+  opacity:0; transition:opacity .7s ease, transform .7s cubic-bezier(.25,.46,.45,.94);
+}
+.timeline__step--left  { flex-direction:row;         transform:translateX(-40px); }
+.timeline__step--right { flex-direction:row-reverse; transform:translateX(40px);  }
+.timeline__step.visible { opacity:1; transform:translateX(0) !important; }
+.timeline__step:last-child { margin-bottom:0; }
+
+/* Nœud central — ring progress + numéro */
+.timeline__node {
+  position:absolute; left:50%; top:50%;
+  transform:translate(-50%, -50%);
+  width:80px; height:80px;
+  display:flex; align-items:center; justify-content:center;
+  z-index:3; flex-shrink:0;
+}
+.timeline__node::before {
+  content:''; position:absolute; inset:8px;
+  border-radius:50%;
+  background: var(--blanc);
+  box-shadow:
+    0 6px 18px rgba(107,145,212,.18),
+    0 0 0 4px rgba(255,255,255,.9) inset;
+  transition: box-shadow .6s ease, background .6s ease;
+}
+.timeline__step.visible .timeline__node::before {
+  background: linear-gradient(135deg, #ffffff 0%, #eef3fb 100%);
+  box-shadow:
+    0 10px 30px rgba(107,145,212,.32),
+    0 0 0 5px rgba(255,255,255,.95) inset;
+}
+
+/* SVG ring */
+.timeline__ring {
+  position:absolute; inset:0; width:100%; height:100%;
+  transform: rotate(-90deg);
+}
+.timeline__ring-bg {
+  fill:none; stroke:rgba(160,180,222,.22); stroke-width:4;
+}
+.timeline__ring-fill {
+  fill:none; stroke-width:4; stroke-linecap:round;
+  stroke: #6B91D4;
+  /* circonférence 2*π*34 ≈ 213.6 */
+  stroke-dasharray: 213.6;
+  stroke-dashoffset: 213.6;
+  transition: stroke-dashoffset 1.4s cubic-bezier(.25,.46,.45,.94);
+  filter: drop-shadow(0 0 6px rgba(107,145,212,.4));
+}
+/* Chaque étape a une couleur unique */
+.timeline__step:nth-of-type(2) .timeline__ring-fill { stroke:#A0B4DE; }
+.timeline__step:nth-of-type(3) .timeline__ring-fill { stroke:#6B91D4; }
+.timeline__step:nth-of-type(4) .timeline__ring-fill { stroke:#4a70c0; }
+.timeline__step:nth-of-type(5) .timeline__ring-fill { stroke:#1a2e50; }
+
+.timeline__step.visible .timeline__ring-fill { stroke-dashoffset: 0; }
+
+.timeline__node-num {
+  position:relative; z-index:2;
+  font-size:.88rem; font-weight:900; letter-spacing:.05em;
+  color: var(--bleu-vif);
+  transition: color .6s ease, transform .6s cubic-bezier(.34,1.56,.64,1);
+}
+.timeline__step.visible .timeline__node-num {
+  transform: scale(1.08);
+}
+.timeline__step:nth-of-type(2).visible .timeline__node-num { color:#6B91D4; }
+.timeline__step:nth-of-type(3).visible .timeline__node-num { color:#4a70c0; }
+.timeline__step:nth-of-type(4).visible .timeline__node-num { color:#1a2e50; }
+.timeline__step:nth-of-type(5).visible .timeline__node-num { color:#070d1a; }
+
+/* Cartes */
+.timeline__card {
+  width:calc(50% - 64px);
+  flex-shrink:0;
+}
+.timeline__step--left  .timeline__card { margin-right:auto; padding-right:2rem; }
+.timeline__step--right .timeline__card { margin-left:auto;  padding-left:2rem;  }
+
+.timeline__card-inner {
+  position:relative; overflow:hidden;
+  border-radius:1.6rem;
+  padding:1.5rem 1.8rem;
+  background: var(--blanc);
+  border: 1px solid rgba(160,180,222,.18);
+  box-shadow:
+    0 2px 8px rgba(26,46,80,.04),
+    0 16px 40px rgba(107,145,212,.08);
+  transition:
+    transform .6s cubic-bezier(.23,1,.32,1),
+    box-shadow .6s cubic-bezier(.23,1,.32,1),
+    border-color .6s cubic-bezier(.23,1,.32,1);
+}
+
+/* Flottement subtil quand la carte est visible */
+.timeline__step.visible .timeline__card-inner {
+  animation: card-float 5s ease-in-out infinite;
+}
+.timeline__step:nth-of-type(3).visible .timeline__card-inner { animation-delay: .7s; }
+.timeline__step:nth-of-type(4).visible .timeline__card-inner { animation-delay: 1.4s; }
+.timeline__step:nth-of-type(5).visible .timeline__card-inner { animation-delay: 2.1s; }
+@keyframes card-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Faisceau lumineux plus large — balayage du contour (rotation via transform) */
+.timeline__card-beam {
+  position:absolute;
+  top:50%; left:50%;
+  width: 360%; aspect-ratio: 1;
+  transform: translate(-50%,-50%) rotate(0deg);
+  pointer-events:none;
+  opacity:0;
+  transition: opacity .8s ease;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 170deg,
+      rgba(107,145,212,.4)   230deg,
+      rgba(160,180,222,.95)  300deg,
+      rgba(220,232,255,1)    350deg,
+      rgba(160,180,222,.95)  10deg,
+      rgba(107,145,212,.4)   90deg,
+      transparent 140deg,
+      transparent 360deg
+    );
+  filter: blur(3px);
+}
+.timeline__step.visible .timeline__card-beam {
+  opacity:1;
+  animation: beam-rotate 6s linear infinite;
+}
+/* Couleur du faisceau adaptée à la teinte de la carte */
+.timeline__step:nth-of-type(2).visible .timeline__card-beam {
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg, transparent 170deg,
+      rgba(160,180,222,.4)  230deg,
+      rgba(160,180,222,.95) 300deg,
+      rgba(225,235,255,1)   350deg,
+      rgba(160,180,222,.95) 10deg,
+      rgba(160,180,222,.4)  90deg,
+      transparent 140deg, transparent 360deg
+    );
+}
+.timeline__step:nth-of-type(3).visible .timeline__card-beam {
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg, transparent 170deg,
+      rgba(107,145,212,.4)  230deg,
+      rgba(107,145,212,.95) 300deg,
+      rgba(215,228,253,1)   350deg,
+      rgba(107,145,212,.95) 10deg,
+      rgba(107,145,212,.4)  90deg,
+      transparent 140deg, transparent 360deg
+    );
+}
+.timeline__step:nth-of-type(4).visible .timeline__card-beam {
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg, transparent 170deg,
+      rgba(74,112,192,.4)  230deg,
+      rgba(74,112,192,.95) 300deg,
+      rgba(200,220,250,1)  350deg,
+      rgba(74,112,192,.95) 10deg,
+      rgba(74,112,192,.4)  90deg,
+      transparent 140deg, transparent 360deg
+    );
+}
+.timeline__step:nth-of-type(5).visible .timeline__card-beam {
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg, transparent 170deg,
+      rgba(26,46,80,.4)  230deg,
+      rgba(26,46,80,.95) 300deg,
+      rgba(175,200,238,1) 350deg,
+      rgba(26,46,80,.95) 10deg,
+      rgba(26,46,80,.4)  90deg,
+      transparent 140deg, transparent 360deg
+    );
+}
+@keyframes beam-rotate {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+/* Masque : ne voir le faisceau que sur le contour (bord ~2px, plus large) */
+.timeline__card-inner {
+  isolation:isolate;
+}
+.timeline__card-inner::after {
+  content:''; position:absolute; inset:2px;
+  border-radius: calc(1.6rem - 2px);
+  background: var(--blanc);
+  z-index:1;
+  pointer-events:none;
+}
+.timeline__card-head,
+.timeline__step-label,
+.timeline__step-desc,
+.timeline__card-glow {
+  position:relative; z-index:2;
+}
+.timeline__step.visible .timeline__card-inner {
+  box-shadow:
+    0 4px 14px rgba(26,46,80,.06),
+    0 24px 60px rgba(107,145,212,.18);
+  border-color: rgba(107,145,212,.26);
+}
+.timeline__card-inner:hover {
+  transform:translateY(-4px);
+  box-shadow:
+    0 4px 14px rgba(26,46,80,.08),
+    0 32px 72px rgba(107,145,212,.24);
+  border-color: rgba(107,145,212,.4);
+}
+
+/* Accent coloré sur le côté (vers la ligne) */
+.timeline__step--left  .timeline__card-inner { border-right: 3px solid transparent; }
+.timeline__step--right .timeline__card-inner { border-left:  3px solid transparent; }
+.timeline__step:nth-of-type(2).visible .timeline__card-inner { border-right-color:#A0B4DE; border-left-color:#A0B4DE; }
+.timeline__step:nth-of-type(3).visible .timeline__card-inner { border-right-color:#6B91D4; border-left-color:#6B91D4; }
+.timeline__step:nth-of-type(4).visible .timeline__card-inner { border-right-color:#4a70c0; border-left-color:#4a70c0; }
+.timeline__step:nth-of-type(5).visible .timeline__card-inner { border-right-color:#1a2e50; border-left-color:#1a2e50; }
+.timeline__step--left  .timeline__card-inner { border-left-color: transparent !important; }
+.timeline__step--right .timeline__card-inner { border-right-color: transparent !important; }
+
+/* Glow interne (halo subtil sur visible) */
+.timeline__card-glow {
+  position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(ellipse at 50% -10%, rgba(160,180,222,.14) 0%, transparent 60%);
+  opacity:0; transition: opacity .8s ease;
+}
+.timeline__step.visible .timeline__card-glow { opacity:1; }
+
+/* Head — icon + keyword */
+.timeline__card-head {
+  display:flex; align-items:center; gap:.7rem;
+  margin-bottom:.9rem;
+}
+.timeline__card-icon {
+  width: 64px; height: 64px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: none;
+  flex-shrink: 0;
+  overflow: visible;
+  transition: transform .6s cubic-bezier(.34,1.56,.64,1);
+}
+.timeline__card-icon img {
+  width: 52px; height: 52px;
+  object-fit: contain;
+  border-radius: 0 !important;
+  background: transparent;
+}
+.timeline__step.visible .timeline__card-icon {
+  transform: scale(1.08);
+}
+
+.timeline__card-kw {
+  font-size:.68rem; font-weight:800; letter-spacing:.15em;
+  text-transform:uppercase;
+  color: var(--gris-moyen);
+  padding:.28rem .7rem; border-radius:1rem;
+  background: rgba(160,180,222,.1);
+  border: 1px solid rgba(160,180,222,.2);
+  transition: color .5s, background .5s, border-color .5s;
+}
+.timeline__step.visible .timeline__card-kw {
+  color: var(--bleu-vif);
+  background: rgba(107,145,212,.1);
+  border-color: rgba(107,145,212,.25);
+}
+
+.timeline__step-label {
+  font-size:1.15rem; font-weight:800; letter-spacing:-.02em;
+  margin-bottom:.5rem; line-height:1.25;
+  color: var(--gris-fonce);
+  opacity:0; transform:translateY(8px);
+  transition: opacity .5s ease .15s, transform .5s ease .15s;
+}
+.timeline__step.visible .timeline__step-label { opacity:1; transform:none; }
+
+.timeline__step-desc {
+  font-size:.9rem; color:var(--gris-moyen); line-height:1.72;
+  opacity:0; transition: opacity .6s ease .32s;
+}
+.timeline__step.visible .timeline__step-desc { opacity:1; }
+
+/* ─── WHY — KPIs ─── */
+.why-section { background: var(--gris-clair); }
+
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; max-width: 700px; margin: 0 auto;
+}
+
+.kpi-card {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.kpi-val {
+  display: flex; align-items: baseline; justify-content: center; gap: .05em;
+  font-size: clamp(2.8rem, 5vw, 4rem); font-weight: 900;
+  letter-spacing: -.05em; line-height: 1;
+  margin-bottom: .7rem;
+  background: linear-gradient(135deg, #6B91D4 0%, #A0B4DE 60%, #4a70c0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.kpi-num { transition: none; }
+.kpi-suffix { font-size: .75em; }
+
+.kpi-label {
+  font-size: .75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .12em;
+  background: linear-gradient(90deg, #A0B4DE, #6B91D4, #A0B4DE);
+  background-size: 200%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: shimmer-label 4s linear infinite;
+}
+
+/* ─── CTA FINAL ─── */
+.cta-final {
+  background:var(--gradient-cta); position:relative; overflow:hidden;
+}
+.cta-final__blob { position:absolute; border-radius:50%; pointer-events:none; filter:blur(120px); }
+.cta-final__blob--1 { width:600px; height:600px; top:-200px; right:-150px; background:rgba(160,180,222,.15); }
+.cta-final__blob--2 { width:500px; height:500px; bottom:-180px; left:-120px; background:rgba(107,145,212,.12); }
+.cta-final__inner { position:relative; max-width:720px; margin:0 auto; }
+.cta-final__btns { display:flex; gap:1rem; justify-content:center; margin-top:2.4rem; flex-wrap:wrap; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:1024px) {
+  .services-grid { grid-template-columns:1fr 1fr; }
+  .kpi-grid { grid-template-columns:1fr 1fr; gap:1rem; }
+
+  .timeline__line { display:none; }
+  .timeline__step { flex-direction:column !important; transform:translateY(30px) !important; margin-bottom:2.4rem; }
+  .timeline__step.visible { transform:translateY(0) !important; }
+  .timeline__node {
+    position:relative; left:auto; top:auto;
+    transform:none !important;
+    margin-bottom:1rem;
+  }
+  .timeline__card { width:100%; padding:0 !important; }
+  .timeline__card-inner { border-left: 3px solid rgba(160,180,222,.4) !important; border-right: none !important; }
+  .timeline__step:nth-of-type(2).visible .timeline__card-inner { border-left-color:#A0B4DE !important; }
+  .timeline__step:nth-of-type(3).visible .timeline__card-inner { border-left-color:#6B91D4 !important; }
+  .timeline__step:nth-of-type(4).visible .timeline__card-inner { border-left-color:#4a70c0 !important; }
+  .timeline__step:nth-of-type(5).visible .timeline__card-inner { border-left-color:#1a2e50 !important; }
+}
+
+@media (max-width:768px) {
+  .services-grid { grid-template-columns:1fr; }
+}
+
+@media (max-width:600px) {
+  .kpi-grid { grid-template-columns:1fr 1fr; }
+  .marquee-section { padding:1rem 0; }
+}
+</style>

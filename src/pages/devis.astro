@@ -1,0 +1,1136 @@
+---
+/* ═══════════════════════════════════════════════
+   PAGE DEVIS — sélection service + formulaires guidés
+   ═══════════════════════════════════════════════ */
+import MainLayout from '../layouts/MainLayout.astro';
+import { translations } from '../i18n/translations';
+const t  = translations.fr;
+const tq = t.quote;
+---
+
+<MainLayout title="Demander un devis — Nal Consulting">
+
+  <!-- ═══ EN-TÊTE SIMPLE (remplace l'ancien hero sombre) ═══ -->
+  <section class="devis-intro">
+    <div class="container devis-intro__inner animate-in">
+      <h1 class="devis-intro__titre">Quel est votre besoin&nbsp;?</h1>
+      <p class="devis-intro__sub">Sélectionnez un service pour ouvrir un formulaire adapté à votre projet.</p>
+    </div>
+  </section>
+
+  <!-- ═══ GRILLE 3 CARTES SERVICES ═══ -->
+  <section class="section services-picker" id="pickerSection">
+    <div class="container">
+      <div class="services-grid" id="servicesGrid">
+
+        <!-- Carte WEB -->
+        <article
+          class="svc-card"
+          data-service="web"
+          role="button"
+          tabindex="0"
+          aria-label="Sélectionner Sites Internet & SEO"
+        >
+          <div class="svc-card__icon svc-card__icon--web">
+            <!-- Icône globe SVG propre -->
+            <svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="32" cy="32" r="22"/>
+              <ellipse cx="32" cy="32" rx="22" ry="10"/>
+              <ellipse cx="32" cy="32" rx="10" ry="22"/>
+              <line x1="10" y1="32" x2="54" y2="32"/>
+              <line x1="32" y1="10" x2="32" y2="54"/>
+            </svg>
+          </div>
+          <div class="svc-card__check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 class="svc-card__titre">Sites Internet &amp; SEO</h3>
+          <p class="svc-card__desc">Un site qui attire, convertit et se positionne sur Google.</p>
+          <div class="svc-card__tags">
+            <span>Vitrine</span><span>E-commerce</span><span>SEO</span>
+          </div>
+          <span class="svc-card__cta">Sélectionner →</span>
+        </article>
+
+        <!-- Carte DATA -->
+        <article
+          class="svc-card"
+          data-service="data"
+          role="button"
+          tabindex="0"
+          aria-label="Sélectionner Reporting & Data Analytics"
+        >
+          <div class="svc-card__icon svc-card__icon--data">
+            <!-- Icône barres SVG -->
+            <svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="8" y1="54" x2="56" y2="54"/>
+              <rect x="12" y="34" width="8" height="20" rx="1.5"/>
+              <rect x="24" y="22" width="8" height="32" rx="1.5"/>
+              <rect x="36" y="28" width="8" height="26" rx="1.5"/>
+              <rect x="48" y="14" width="8" height="40" rx="1.5"/>
+            </svg>
+          </div>
+          <div class="svc-card__check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 class="svc-card__titre">Reporting &amp; Data Analytics</h3>
+          <p class="svc-card__desc">Des dashboards et KPI en temps réel pour décider vite et bien.</p>
+          <div class="svc-card__tags">
+            <span>Power BI</span><span>Dashboards</span><span>ETL</span>
+          </div>
+          <span class="svc-card__cta">Sélectionner →</span>
+        </article>
+
+        <!-- Carte IA -->
+        <article
+          class="svc-card"
+          data-service="ia"
+          role="button"
+          tabindex="0"
+          aria-label="Sélectionner Automatisations & Agents IA"
+        >
+          <div class="svc-card__icon svc-card__icon--ia">
+            <!-- Icône cerveau / noeuds SVG -->
+            <svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="32" cy="14" r="4"/>
+              <circle cx="14" cy="30" r="4"/>
+              <circle cx="50" cy="30" r="4"/>
+              <circle cx="22" cy="50" r="4"/>
+              <circle cx="42" cy="50" r="4"/>
+              <circle cx="32" cy="32" r="4"/>
+              <line x1="32" y1="18" x2="32" y2="28"/>
+              <line x1="18" y1="30" x2="28" y2="32"/>
+              <line x1="46" y1="30" x2="36" y2="32"/>
+              <line x1="24" y1="46" x2="30" y2="36"/>
+              <line x1="40" y1="46" x2="34" y2="36"/>
+              <line x1="18" y1="32" x2="20" y2="46"/>
+              <line x1="46" y1="32" x2="44" y2="46"/>
+            </svg>
+          </div>
+          <div class="svc-card__check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 class="svc-card__titre">Automatisations &amp; Agents IA</h3>
+          <p class="svc-card__desc">Des agents et workflows qui prennent en charge vos tâches répétitives.</p>
+          <div class="svc-card__tags">
+            <span>Agents IA</span><span>Automation</span><span>LLM</span>
+          </div>
+          <span class="svc-card__cta">Sélectionner →</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ZONE FORMULAIRE (révélée après sélection) ═══ -->
+  <section class="section devis-section" id="formSection" aria-hidden="true">
+    <div class="container">
+
+      <!-- Lien retour sélection -->
+      <button type="button" class="back-link" id="backLink">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        <span>Changer de service</span>
+      </button>
+
+      <div class="devis-layout">
+
+        <!-- COLONNE FORMULAIRES -->
+        <div class="forms-col">
+
+          <!-- ── FORM : WEB ── -->
+          <form
+            class="devis-form"
+            data-form="web"
+            action="https://formspree.io/f/XXXXXXXX"
+            method="POST"
+            hidden
+          >
+            <input type="hidden" name="service" value="web" />
+            <h2 class="form-titre">Sites Internet &amp; SEO</h2>
+            <p class="form-sub">Quelques questions pour cerner votre projet web.</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="web-prenom">Prénom *</label>
+                <input type="text" id="web-prenom" name="prenom" placeholder="Votre prénom" required />
+              </div>
+              <div class="form-group">
+                <label for="web-nom">Nom *</label>
+                <input type="text" id="web-nom" name="nom" placeholder="Votre nom" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="web-email">Email *</label>
+                <input type="email" id="web-email" name="email" placeholder="votre@email.fr" required />
+              </div>
+              <div class="form-group">
+                <label for="web-tel">Téléphone <span class="form-optionnel">(optionnel)</span></label>
+                <input type="tel" id="web-tel" name="telephone" placeholder="+33 6 12 34 56 78" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="web-entreprise">Entreprise</label>
+              <input type="text" id="web-entreprise" name="entreprise" placeholder="Nom de votre entreprise" />
+            </div>
+
+            <div class="form-group">
+              <label>Type de site *</label>
+              <div class="radio-cards">
+                {['Vitrine','E-commerce','Application web','Refonte'].map((v, i) => (
+                  <label class="radio-card">
+                    <input type="radio" name="type_site" value={v} required={i === 0} />
+                    <span class="radio-card__inner">{v}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="web-objectif">Objectif principal</label>
+                <div class="select-wrap">
+                  <select id="web-objectif" name="objectif">
+                    <option value="" disabled selected>Choisir…</option>
+                    <option>Générer des leads</option>
+                    <option>Vendre en ligne</option>
+                    <option>Présenter l'activité</option>
+                    <option>Autre</option>
+                  </select>
+                  <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="web-pages">Nombre de pages estimé</label>
+                <div class="select-wrap">
+                  <select id="web-pages" name="nb_pages">
+                    <option value="" disabled selected>Choisir…</option>
+                    <option>1-5</option>
+                    <option>6-15</option>
+                    <option>16-30</option>
+                    <option>30+</option>
+                  </select>
+                  <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>SEO inclus&nbsp;?</label>
+              <div class="toggle-row">
+                {['Oui','Non','À discuter'].map((v, i) => (
+                  <label class="toggle-pill">
+                    <input type="radio" name="seo" value={v} checked={i === 0} />
+                    <span>{v}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="web-budget">Budget envisagé</label>
+              <div class="select-wrap">
+                <select id="web-budget" name="budget">
+                  <option value="" disabled selected>Fourchette budgétaire…</option>
+                  {tq.budgets.map((b) => (
+                    <option value={b.value}>{b.label}</option>
+                  ))}
+                </select>
+                <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="web-desc">Description du projet *</label>
+              <textarea id="web-desc" name="description" rows="5" placeholder="Décrivez vos objectifs, votre cible, votre identité…" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primaire devis-submit">
+              <span>Envoyer ma demande</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+            <p class="devis-note">Réponse garantie sous 24h. Aucun engagement.</p>
+          </form>
+
+          <!-- ── FORM : DATA ── -->
+          <form
+            class="devis-form"
+            data-form="data"
+            action="https://formspree.io/f/XXXXXXXX"
+            method="POST"
+            hidden
+          >
+            <input type="hidden" name="service" value="data" />
+            <h2 class="form-titre">Reporting &amp; Data Analytics</h2>
+            <p class="form-sub">Parlons de vos données et de vos besoins de reporting.</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="data-prenom">Prénom *</label>
+                <input type="text" id="data-prenom" name="prenom" placeholder="Votre prénom" required />
+              </div>
+              <div class="form-group">
+                <label for="data-nom">Nom *</label>
+                <input type="text" id="data-nom" name="nom" placeholder="Votre nom" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="data-email">Email *</label>
+                <input type="email" id="data-email" name="email" placeholder="votre@email.fr" required />
+              </div>
+              <div class="form-group">
+                <label for="data-tel">Téléphone <span class="form-optionnel">(optionnel)</span></label>
+                <input type="tel" id="data-tel" name="telephone" placeholder="+33 6 12 34 56 78" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="data-entreprise">Entreprise</label>
+              <input type="text" id="data-entreprise" name="entreprise" placeholder="Nom de votre entreprise" />
+            </div>
+
+            <div class="form-group">
+              <label>Sources de données</label>
+              <div class="chips-group">
+                {['Excel','SQL','API','ERP','CRM','Autre'].map((v) => (
+                  <label class="chip">
+                    <input type="checkbox" name="sources" value={v} />
+                    <span>{v}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Outil cible *</label>
+              <div class="radio-cards">
+                {['Power BI','Looker Studio','Dashboard custom','À recommander'].map((v, i) => (
+                  <label class="radio-card">
+                    <input type="radio" name="outil" value={v} required={i === 0} />
+                    <span class="radio-card__inner">{v}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="data-volume">Volume de données</label>
+                <div class="select-wrap">
+                  <select id="data-volume" name="volume">
+                    <option value="" disabled selected>Choisir…</option>
+                    <option>Petit (&lt; 10k lignes)</option>
+                    <option>Moyen (10k – 1M)</option>
+                    <option>Grand (&gt; 1M)</option>
+                    <option>Je ne sais pas</option>
+                  </select>
+                  <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="data-freq">Fréquence de mise à jour</label>
+                <div class="select-wrap">
+                  <select id="data-freq" name="frequence">
+                    <option value="" disabled selected>Choisir…</option>
+                    <option>Temps réel</option>
+                    <option>Quotidien</option>
+                    <option>Hebdomadaire</option>
+                    <option>Mensuel</option>
+                  </select>
+                  <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="data-budget">Budget envisagé</label>
+              <div class="select-wrap">
+                <select id="data-budget" name="budget">
+                  <option value="" disabled selected>Fourchette budgétaire…</option>
+                  {tq.budgets.map((b) => (
+                    <option value={b.value}>{b.label}</option>
+                  ))}
+                </select>
+                <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="data-desc">Description du besoin *</label>
+              <textarea id="data-desc" name="description" rows="5" placeholder="Décrivez vos sources, vos indicateurs clés, vos utilisateurs cibles…" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primaire devis-submit">
+              <span>Envoyer ma demande</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+            <p class="devis-note">Réponse garantie sous 24h. Aucun engagement.</p>
+          </form>
+
+          <!-- ── FORM : IA ── -->
+          <form
+            class="devis-form"
+            data-form="ia"
+            action="https://formspree.io/f/XXXXXXXX"
+            method="POST"
+            hidden
+          >
+            <input type="hidden" name="service" value="ia" />
+            <h2 class="form-titre">Agents IA &amp; Automatisation</h2>
+            <p class="form-sub">Décrivez la tâche à automatiser, on construit la solution.</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ia-prenom">Prénom *</label>
+                <input type="text" id="ia-prenom" name="prenom" placeholder="Votre prénom" required />
+              </div>
+              <div class="form-group">
+                <label for="ia-nom">Nom *</label>
+                <input type="text" id="ia-nom" name="nom" placeholder="Votre nom" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ia-email">Email *</label>
+                <input type="email" id="ia-email" name="email" placeholder="votre@email.fr" required />
+              </div>
+              <div class="form-group">
+                <label for="ia-tel">Téléphone <span class="form-optionnel">(optionnel)</span></label>
+                <input type="tel" id="ia-tel" name="telephone" placeholder="+33 6 12 34 56 78" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="ia-entreprise">Entreprise</label>
+              <input type="text" id="ia-entreprise" name="entreprise" placeholder="Nom de votre entreprise" />
+            </div>
+
+            <div class="form-group">
+              <label>Type d'automatisation *</label>
+              <div class="radio-cards">
+                {['Agent conversationnel','Workflow automatisé','Traitement de documents','Analyse / Veille','Autre'].map((v, i) => (
+                  <label class="radio-card">
+                    <input type="radio" name="type_auto" value={v} required={i === 0} />
+                    <span class="radio-card__inner">{v}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="ia-tache">Tâche à automatiser *</label>
+              <textarea id="ia-tache" name="tache" rows="3" placeholder="En 1 à 2 phrases : quelle tâche voulez-vous automatiser ?" required></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ia-volume">Volume mensuel estimé</label>
+                <div class="select-wrap">
+                  <select id="ia-volume" name="volume_mensuel">
+                    <option value="" disabled selected>Choisir…</option>
+                    <option>&lt; 100 tâches</option>
+                    <option>100 – 1 000</option>
+                    <option>1 000 – 10 000</option>
+                    <option>&gt; 10 000</option>
+                    <option>Je ne sais pas</option>
+                  </select>
+                  <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="ia-budget">Budget envisagé</label>
+                <div class="select-wrap">
+                  <select id="ia-budget" name="budget">
+                    <option value="" disabled selected>Fourchette…</option>
+                    {tq.budgets.map((b) => (
+                      <option value={b.value}>{b.label}</option>
+                    ))}
+                  </select>
+                  <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Intégration requise</label>
+              <div class="chips-group">
+                {['Email','Slack','CRM','Base de données','API custom','Aucune'].map((v) => (
+                  <label class="chip">
+                    <input type="checkbox" name="integrations" value={v} />
+                    <span>{v}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="ia-desc">Description du projet *</label>
+              <textarea id="ia-desc" name="description" rows="5" placeholder="Contexte, outils actuels, contraintes, résultat attendu…" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primaire devis-submit">
+              <span>Envoyer ma demande</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+            <p class="devis-note">Réponse garantie sous 24h. Aucun engagement.</p>
+          </form>
+
+        </div>
+
+        <!-- ASIDE — étapes + garanties -->
+        <aside class="devis-aside">
+          <div class="aside-bloc">
+            <h3 class="aside-bloc__title">{tq.howTitle}</h3>
+            <div class="aside-steps">
+              {tq.steps.map((s, i) => (
+                <div class="aside-step">
+                  <span class="aside-step__num">{i + 1}</span>
+                  <div>
+                    <p class="aside-step__title">{s.title}</p>
+                    <p class="aside-step__desc">{s.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="aside-bloc aside-bloc--accent">
+            <h3 class="aside-bloc__title">{tq.guaranteesTitle}</h3>
+            {tq.guarantees.map((g) => (
+              <div class="aside-guarantee">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>{g}</span>
+              </div>
+            ))}
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</MainLayout>
+
+<script>
+  /* ─────────────────────────────────────────────
+     SÉLECTION CARTE + RÉVÉLATION FORMULAIRE
+  ───────────────────────────────────────────── */
+  const cards   = Array.from(document.querySelectorAll<HTMLElement>('.svc-card'));
+  const forms   = Array.from(document.querySelectorAll<HTMLFormElement>('.devis-form'));
+  const formSec = document.getElementById('formSection') as HTMLElement;
+  const backBtn = document.getElementById('backLink') as HTMLButtonElement;
+  const picker  = document.getElementById('pickerSection') as HTMLElement;
+
+  /**
+   * Sélectionne un service, affiche le bon formulaire et
+   * révèle la section avec un scroll fluide.
+   */
+  function selectService(svc: string) {
+    // Etat visuel des cartes
+    cards.forEach((c) => {
+      c.classList.toggle('svc-card--selected', c.dataset.service === svc);
+    });
+
+    // Mode compact : on masque les cartes non sélectionnées
+    picker.classList.add('services-picker--compact');
+
+    // Affichage du bon formulaire
+    forms.forEach((f) => {
+      const match = f.dataset.form === svc;
+      f.hidden = !match;
+    });
+
+    // Révélation de la section formulaire
+    formSec.classList.add('form-visible');
+    formSec.removeAttribute('aria-hidden');
+
+    // Scroll fluide vers le formulaire (après la transition CSS)
+    window.setTimeout(() => {
+      formSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
+  }
+
+  /**
+   * Retour à la sélection : cache la section, nettoie l'état.
+   */
+  function resetSelection() {
+    formSec.classList.remove('form-visible');
+    formSec.setAttribute('aria-hidden', 'true');
+    picker.classList.remove('services-picker--compact');
+    cards.forEach((c) => c.classList.remove('svc-card--selected'));
+    forms.forEach((f) => (f.hidden = true));
+    window.setTimeout(() => {
+      picker.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
+  }
+
+  // Listeners cartes (clic + clavier)
+  cards.forEach((card) => {
+    const svc = card.dataset.service!;
+    card.addEventListener('click', () => selectService(svc));
+    card.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectService(svc);
+      }
+    });
+  });
+
+  // Listener bouton retour
+  backBtn?.addEventListener('click', resetSelection);
+
+  // Désactiver submit pendant envoi pour éviter les doublons
+  forms.forEach((f) => {
+    f.addEventListener('submit', () => {
+      const btn = f.querySelector<HTMLButtonElement>('.devis-submit');
+      if (btn) btn.disabled = true;
+    });
+  });
+
+  /* ─────────────────────────────────────────────
+     PRÉ-SÉLECTION VIA URL ?service=web|data|ia
+  ───────────────────────────────────────────── */
+  const params = new URLSearchParams(window.location.search);
+  const svcParam = params.get('service');
+  if (svcParam && ['web', 'data', 'ia'].includes(svcParam)) {
+    // Léger délai pour laisser le layout se stabiliser
+    window.setTimeout(() => selectService(svcParam), 50);
+  }
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════
+   INTRO (header léger, remplace l'ancien hero)
+═══════════════════════════════════════════════ */
+.devis-intro {
+  background: var(--gris-clair);
+  padding: 7rem 0 2.5rem;
+  text-align: center;
+}
+.devis-intro__inner { max-width: 720px; }
+.devis-intro__titre {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  color: var(--gris-fonce);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.6rem;
+}
+.devis-intro__sub {
+  font-size: 1rem;
+  color: var(--gris-moyen);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════
+   PICKER — grille 3 cartes services
+═══════════════════════════════════════════════ */
+.services-picker {
+  background: var(--gris-clair);
+  padding-top: 1.5rem;
+  padding-bottom: 5rem;
+  transition: padding 0.5s ease;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  transition: grid-template-columns 0.5s ease;
+}
+
+/* ── Mode compact : un seul choix + formulaire ── */
+.services-picker--compact {
+  padding-bottom: 2rem;
+}
+.services-picker--compact .services-grid {
+  grid-template-columns: minmax(0, 520px);
+  justify-content: center;
+}
+.services-picker--compact .svc-card:not(.svc-card--selected) {
+  display: none;
+}
+.services-picker--compact .svc-card--selected {
+  animation: svc-card-float 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+@keyframes svc-card-float {
+  from { opacity: 0.4; transform: translateY(14px) scale(0.98); }
+  to   { opacity: 1;   transform: translateY(0)    scale(1);    }
+}
+
+/* Carte service */
+.svc-card {
+  position: relative;
+  background: white;
+  border: 1.5px solid var(--gris-light);
+  border-radius: var(--rayon-lg);
+  padding: 1.8rem 1.6rem 1.6rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  text-align: left;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.3s ease,
+    background 0.3s ease;
+  outline: none;
+}
+.svc-card:hover,
+.svc-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgba(107, 145, 212, 0.55);
+  box-shadow: 0 18px 50px rgba(107, 145, 212, 0.18), 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+.svc-card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(160, 180, 222, 0.35), 0 18px 50px rgba(107, 145, 212, 0.18);
+}
+
+/* Etat sélectionné */
+.svc-card--selected {
+  border-color: var(--bleu-vif);
+  background: linear-gradient(180deg, rgba(160, 180, 222, 0.05), white 70%);
+  box-shadow: 0 0 0 3px rgba(107, 145, 212, 0.18), 0 20px 50px rgba(107, 145, 212, 0.2);
+}
+.svc-card--selected .svc-card__check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Icône service */
+.svc-card__icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: linear-gradient(145deg, rgba(160, 180, 222, 0.12), rgba(107, 145, 212, 0.06));
+  border: 1px solid rgba(160, 180, 222, 0.2);
+  color: var(--bleu-vif);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.svc-card:hover .svc-card__icon { transform: scale(1.05) rotate(-2deg); }
+.svc-card__icon--web  { color: #6B91D4; }
+.svc-card__icon--data { color: #4a70c0; }
+.svc-card__icon--ia   { color: #A0B4DE; }
+
+/* Checkmark (visible uniquement quand sélectionné) */
+.svc-card__check {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gradient-marque);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1);
+  box-shadow: 0 4px 12px rgba(107, 145, 212, 0.3);
+}
+
+.svc-card__titre {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--gris-fonce);
+  letter-spacing: -0.02em;
+  margin: 0.2rem 0 0;
+}
+.svc-card__desc {
+  font-size: 0.9rem;
+  color: var(--gris-moyen);
+  line-height: 1.55;
+  margin: 0;
+}
+.svc-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.svc-card__tags span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2rem;
+  background: rgba(160, 180, 222, 0.12);
+  border: 1px solid rgba(160, 180, 222, 0.22);
+  color: var(--bleu-moyen);
+}
+.svc-card__cta {
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--bleu-vif);
+  opacity: 0.85;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.svc-card:hover .svc-card__cta { opacity: 1; transform: translateX(3px); }
+
+/* ═══════════════════════════════════════════════
+   SECTION FORMULAIRE
+═══════════════════════════════════════════════ */
+.devis-section {
+  background: white;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    max-height 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+    transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+    padding 0.55s ease;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.devis-section.form-visible {
+  max-height: 4000px;
+  opacity: 1;
+  transform: none;
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+}
+
+/* Lien retour */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gris-moyen);
+  padding: 0.4rem 0.6rem 0.4rem 0;
+  margin-bottom: 1.6rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.back-link:hover {
+  color: var(--bleu-vif);
+  transform: translateX(-3px);
+}
+
+/* Layout form + aside */
+.devis-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Colonne formulaires */
+.forms-col { min-width: 0; }
+
+.devis-form {
+  background: white;
+  border-radius: var(--rayon-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1.5px solid var(--gris-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  animation: formFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* L'attribut [hidden] doit prévaloir sur display:flex — sinon les 3 formulaires sont tous affichés */
+.devis-form[hidden] {
+  display: none !important;
+}
+@keyframes formFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.form-titre {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--gris-fonce);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.form-sub {
+  font-size: 0.92rem;
+  color: var(--gris-moyen);
+  margin: -0.8rem 0 0.3rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gris-fonce);
+}
+
+.form-optionnel {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gris-moyen);
+  opacity: 0.75;
+  margin-left: 0.25rem;
+}
+
+/* Inputs / textarea */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border: 1.5px solid var(--gris-light);
+  border-radius: var(--rayon);
+  font-size: 0.98rem;
+  font-family: inherit;
+  background: white;
+  color: var(--gris-fonce);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--bleu);
+  box-shadow: 0 0 0 3px rgba(160, 180, 222, 0.22);
+}
+.form-group textarea { resize: vertical; min-height: 90px; }
+
+/* Select */
+.select-wrap { position: relative; }
+.select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 0.85rem 2.5rem 0.85rem 1.1rem;
+  border: 1.5px solid var(--gris-light);
+  border-radius: var(--rayon);
+  font-size: 0.98rem;
+  font-family: inherit;
+  background: white;
+  color: var(--gris-fonce);
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.select-wrap select:focus {
+  border-color: var(--bleu);
+  box-shadow: 0 0 0 3px rgba(160, 180, 222, 0.22);
+}
+.select-arrow {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--gris-moyen);
+}
+
+/* Radio cards (grille de pills cliquables) */
+.radio-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+}
+.radio-card { cursor: pointer; }
+.radio-card input { position: absolute; opacity: 0; pointer-events: none; }
+.radio-card__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--gris-light);
+  border-radius: var(--rayon);
+  background: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gris-fonce);
+  text-align: center;
+  transition: border-color 0.25s, background 0.25s, color 0.25s, transform 0.25s;
+}
+.radio-card:hover .radio-card__inner {
+  border-color: rgba(107, 145, 212, 0.5);
+  transform: translateY(-2px);
+}
+.radio-card input:checked + .radio-card__inner {
+  border-color: var(--bleu-vif);
+  background: linear-gradient(135deg, rgba(160, 180, 222, 0.14), rgba(107, 145, 212, 0.08));
+  color: var(--bleu-moyen);
+  box-shadow: 0 0 0 3px rgba(107, 145, 212, 0.15);
+}
+.radio-card input:focus-visible + .radio-card__inner {
+  box-shadow: 0 0 0 3px rgba(160, 180, 222, 0.35);
+}
+
+/* Toggle pills (SEO Oui/Non/À discuter) */
+.toggle-row {
+  display: inline-flex;
+  gap: 0.4rem;
+  background: var(--gris-clair);
+  padding: 0.3rem;
+  border-radius: 2rem;
+  border: 1px solid var(--gris-light);
+}
+.toggle-pill { cursor: pointer; }
+.toggle-pill input { position: absolute; opacity: 0; pointer-events: none; }
+.toggle-pill span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gris-moyen);
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+}
+.toggle-pill input:checked + span {
+  background: white;
+  color: var(--bleu-moyen);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Chips (checkbox multi-select) */
+.chips-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chip { cursor: pointer; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1rem;
+  border: 1.5px solid var(--gris-light);
+  border-radius: 2rem;
+  background: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gris-fonce);
+  transition: border-color 0.25s, background 0.25s, color 0.25s;
+}
+.chip:hover span { border-color: rgba(107, 145, 212, 0.5); }
+.chip input:checked + span {
+  border-color: var(--bleu-vif);
+  background: linear-gradient(135deg, rgba(160, 180, 222, 0.14), rgba(107, 145, 212, 0.08));
+  color: var(--bleu-moyen);
+}
+
+/* Submit */
+.devis-submit {
+  width: 100%;
+  justify-content: center;
+  padding: 1.05rem;
+  font-size: 1rem;
+  margin-top: 0.4rem;
+}
+.devis-note {
+  font-size: 0.8rem;
+  color: var(--gris-moyen);
+  text-align: center;
+  margin: -0.3rem 0 0;
+}
+
+/* ═══════════════════════════════════════════════
+   ASIDE
+═══════════════════════════════════════════════ */
+.devis-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  position: sticky;
+  top: 100px;
+}
+.aside-bloc {
+  background: white;
+  border-radius: var(--rayon-lg);
+  padding: 1.8rem;
+  border: 1.5px solid var(--gris-light);
+}
+.aside-bloc--accent {
+  background: linear-gradient(135deg, rgba(160, 180, 222, 0.07), rgba(107, 145, 212, 0.04));
+  border-color: rgba(160, 180, 222, 0.22);
+}
+.aside-bloc__title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--gris-fonce);
+  margin-bottom: 1.1rem;
+  letter-spacing: -0.01em;
+}
+.aside-steps { display: flex; flex-direction: column; gap: 1.1rem; }
+.aside-step { display: flex; gap: 0.85rem; align-items: flex-start; }
+.aside-step__num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--gradient-marque);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aside-step__title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gris-fonce);
+  margin-bottom: 0.15rem;
+}
+.aside-step__desc {
+  font-size: 0.82rem;
+  color: var(--gris-moyen);
+}
+.aside-guarantee {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--gris-fonce);
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(160, 180, 222, 0.1);
+}
+.aside-guarantee:last-child { border-bottom: none; }
+.aside-guarantee svg { color: var(--bleu-vif); flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .devis-layout { grid-template-columns: 1fr; }
+  .devis-aside { position: static; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .devis-form { padding: 1.6rem 1.2rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .devis-intro { padding: 6rem 0 2rem; }
+}
+</style>
