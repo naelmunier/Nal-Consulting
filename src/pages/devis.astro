@@ -13,8 +13,8 @@ const tq = t.quote;
   <!-- ═══ EN-TÊTE SIMPLE (remplace l'ancien hero sombre) ═══ -->
   <section class="devis-intro">
     <div class="container devis-intro__inner animate-in">
-      <h1 class="devis-intro__titre">Quel est votre besoin&nbsp;?</h1>
-      <p class="devis-intro__sub">Sélectionnez un service pour ouvrir un formulaire adapté à votre projet.</p>
+      <h1 class="devis-intro__titre" data-i18n="quote.intro.title">{tq.intro.title}</h1>
+      <p class="devis-intro__sub" data-i18n="quote.intro.sub">{tq.intro.sub}</p>
     </div>
   </section>
 
@@ -44,12 +44,12 @@ const tq = t.quote;
           <div class="svc-card__check" aria-hidden="true">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <h3 class="svc-card__titre">Sites Internet &amp; SEO</h3>
-          <p class="svc-card__desc">Un site qui attire, convertit et se positionne sur Google.</p>
+          <h3 class="svc-card__titre" data-i18n="quote.cards.0.title">{tq.cards[0].title}</h3>
+          <p class="svc-card__desc" data-i18n="quote.cards.0.desc">{tq.cards[0].desc}</p>
           <div class="svc-card__tags">
-            <span>Vitrine</span><span>E-commerce</span><span>SEO</span>
+            <span data-i18n="quote.cards.0.tag1">{tq.cards[0].tag1}</span><span data-i18n="quote.cards.0.tag2">{tq.cards[0].tag2}</span><span data-i18n="quote.cards.0.tag3">{tq.cards[0].tag3}</span>
           </div>
-          <span class="svc-card__cta">Sélectionner →</span>
+          <span class="svc-card__cta" data-i18n="quote.selectCta">{tq.selectCta}</span>
         </article>
 
         <!-- Carte DATA -->
@@ -73,12 +73,12 @@ const tq = t.quote;
           <div class="svc-card__check" aria-hidden="true">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <h3 class="svc-card__titre">Reporting &amp; Data Analytics</h3>
-          <p class="svc-card__desc">Des dashboards et KPI en temps réel pour décider vite et bien.</p>
+          <h3 class="svc-card__titre" data-i18n="quote.cards.1.title">{tq.cards[1].title}</h3>
+          <p class="svc-card__desc" data-i18n="quote.cards.1.desc">{tq.cards[1].desc}</p>
           <div class="svc-card__tags">
-            <span>Power BI</span><span>Dashboards</span><span>ETL</span>
+            <span data-i18n="quote.cards.1.tag1">{tq.cards[1].tag1}</span><span data-i18n="quote.cards.1.tag2">{tq.cards[1].tag2}</span><span data-i18n="quote.cards.1.tag3">{tq.cards[1].tag3}</span>
           </div>
-          <span class="svc-card__cta">Sélectionner →</span>
+          <span class="svc-card__cta" data-i18n="quote.selectCta">{tq.selectCta}</span>
         </article>
 
         <!-- Carte IA -->
@@ -110,12 +110,12 @@ const tq = t.quote;
           <div class="svc-card__check" aria-hidden="true">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <h3 class="svc-card__titre">Automatisations &amp; Agents IA</h3>
-          <p class="svc-card__desc">Des agents et workflows qui prennent en charge vos tâches répétitives.</p>
+          <h3 class="svc-card__titre" data-i18n="quote.cards.2.title">{tq.cards[2].title}</h3>
+          <p class="svc-card__desc" data-i18n="quote.cards.2.desc">{tq.cards[2].desc}</p>
           <div class="svc-card__tags">
-            <span>Agents IA</span><span>Automation</span><span>LLM</span>
+            <span data-i18n="quote.cards.2.tag1">{tq.cards[2].tag1}</span><span data-i18n="quote.cards.2.tag2">{tq.cards[2].tag2}</span><span data-i18n="quote.cards.2.tag3">{tq.cards[2].tag3}</span>
           </div>
-          <span class="svc-card__cta">Sélectionner →</span>
+          <span class="svc-card__cta" data-i18n="quote.selectCta">{tq.selectCta}</span>
         </article>
 
       </div>
@@ -129,7 +129,7 @@ const tq = t.quote;
       <!-- Lien retour sélection -->
       <button type="button" class="back-link" id="backLink">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-        <span>Changer de service</span>
+        <span data-i18n="quote.backLink">{tq.backLink}</span>
       </button>
 
       <div class="devis-layout">
@@ -146,43 +146,43 @@ const tq = t.quote;
             hidden
           >
             <input type="hidden" name="service" value="web" />
-            <h2 class="form-titre">Sites Internet &amp; SEO</h2>
-            <p class="form-sub">Quelques questions pour cerner votre projet web.</p>
+            <h2 class="form-titre" data-i18n="quote.web.title">{tq.web.title}</h2>
+            <p class="form-sub" data-i18n="quote.web.sub">{tq.web.sub}</p>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="web-prenom">Prénom *</label>
-                <input type="text" id="web-prenom" name="prenom" placeholder="Votre prénom" required />
+                <label for="web-prenom" data-i18n="quote.web.fields.firstname">{tq.web.fields.firstname}</label>
+                <input type="text" id="web-prenom" name="prenom" placeholder={tq.web.fields.firstnamePh} data-i18n-placeholder="quote.web.fields.firstnamePh" required />
               </div>
               <div class="form-group">
-                <label for="web-nom">Nom *</label>
-                <input type="text" id="web-nom" name="nom" placeholder="Votre nom" required />
+                <label for="web-nom" data-i18n="quote.web.fields.lastname">{tq.web.fields.lastname}</label>
+                <input type="text" id="web-nom" name="nom" placeholder={tq.web.fields.lastnamePh} data-i18n-placeholder="quote.web.fields.lastnamePh" required />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="web-email">Email *</label>
-                <input type="email" id="web-email" name="email" placeholder="votre@email.fr" required />
+                <label for="web-email" data-i18n="quote.web.fields.email">{tq.web.fields.email}</label>
+                <input type="email" id="web-email" name="email" placeholder={tq.web.fields.emailPh} data-i18n-placeholder="quote.web.fields.emailPh" required />
               </div>
               <div class="form-group">
-                <label for="web-tel">Téléphone <span class="form-optionnel">(optionnel)</span></label>
-                <input type="tel" id="web-tel" name="telephone" placeholder="+33 6 12 34 56 78" />
+                <label for="web-tel"><span data-i18n="quote.web.fields.phone">{tq.web.fields.phone}</span> <span class="form-optionnel" data-i18n="quote.web.fields.phoneOpt">{tq.web.fields.phoneOpt}</span></label>
+                <input type="tel" id="web-tel" name="telephone" placeholder={tq.web.fields.phonePh} data-i18n-placeholder="quote.web.fields.phonePh" />
               </div>
             </div>
 
             <div class="form-group">
-              <label for="web-entreprise">Entreprise</label>
-              <input type="text" id="web-entreprise" name="entreprise" placeholder="Nom de votre entreprise" />
+              <label for="web-entreprise" data-i18n="quote.web.fields.company">{tq.web.fields.company}</label>
+              <input type="text" id="web-entreprise" name="entreprise" placeholder={tq.web.fields.companyPh} data-i18n-placeholder="quote.web.fields.companyPh" />
             </div>
 
             <div class="form-group">
-              <label>Type de site *</label>
+              <label data-i18n="quote.web.fields.typeLabel">{tq.web.fields.typeLabel}</label>
               <div class="radio-cards">
-                {['Vitrine','E-commerce','Application web','Refonte'].map((v, i) => (
+                {tq.web.fields.typeOptions.map((v, i) => (
                   <label class="radio-card">
                     <input type="radio" name="type_site" value={v} required={i === 0} />
-                    <span class="radio-card__inner">{v}</span>
+                    <span class="radio-card__inner" data-i18n={`quote.web.fields.typeOptions.${i}`}>{v}</span>
                   </label>
                 ))}
               </div>
@@ -190,27 +190,25 @@ const tq = t.quote;
 
             <div class="form-row">
               <div class="form-group">
-                <label for="web-objectif">Objectif principal</label>
+                <label for="web-objectif" data-i18n="quote.web.fields.objective">{tq.web.fields.objective}</label>
                 <div class="select-wrap">
                   <select id="web-objectif" name="objectif">
-                    <option value="" disabled selected>Choisir…</option>
-                    <option>Générer des leads</option>
-                    <option>Vendre en ligne</option>
-                    <option>Présenter l'activité</option>
-                    <option>Autre</option>
+                    <option value="" disabled selected data-i18n="quote.web.fields.objectiveChoose">{tq.web.fields.objectiveChoose}</option>
+                    {tq.web.fields.objectiveOptions.map((v, i) => (
+                      <option data-i18n={`quote.web.fields.objectiveOptions.${i}`}>{v}</option>
+                    ))}
                   </select>
                   <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
               </div>
               <div class="form-group">
-                <label for="web-pages">Nombre de pages estimé</label>
+                <label for="web-pages" data-i18n="quote.web.fields.pages">{tq.web.fields.pages}</label>
                 <div class="select-wrap">
                   <select id="web-pages" name="nb_pages">
-                    <option value="" disabled selected>Choisir…</option>
-                    <option>1-5</option>
-                    <option>6-15</option>
-                    <option>16-30</option>
-                    <option>30+</option>
+                    <option value="" disabled selected data-i18n="quote.web.fields.pagesChoose">{tq.web.fields.pagesChoose}</option>
+                    {tq.web.fields.pagesOptions.map((v) => (
+                      <option>{v}</option>
+                    ))}
                   </select>
                   <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
@@ -218,24 +216,24 @@ const tq = t.quote;
             </div>
 
             <div class="form-group">
-              <label>SEO inclus&nbsp;?</label>
+              <label data-i18n="quote.web.fields.seoLabel">{tq.web.fields.seoLabel}</label>
               <div class="toggle-row">
-                {['Oui','Non','À discuter'].map((v, i) => (
+                {tq.web.fields.seoOptions.map((v, i) => (
                   <label class="toggle-pill">
                     <input type="radio" name="seo" value={v} checked={i === 0} />
-                    <span>{v}</span>
+                    <span data-i18n={`quote.web.fields.seoOptions.${i}`}>{v}</span>
                   </label>
                 ))}
               </div>
             </div>
 
             <div class="form-group">
-              <label for="web-budget">Budget envisagé</label>
+              <label for="web-budget" data-i18n="quote.web.fields.budget">{tq.web.fields.budget}</label>
               <div class="select-wrap">
                 <select id="web-budget" name="budget">
-                  <option value="" disabled selected>Fourchette budgétaire…</option>
-                  {tq.budgets.map((b) => (
-                    <option value={b.value}>{b.label}</option>
+                  <option value="" disabled selected data-i18n="quote.web.fields.budgetPh">{tq.web.fields.budgetPh}</option>
+                  {tq.budgets.map((b, i) => (
+                    <option value={b.value} data-i18n={`quote.budgets.${i}.label`}>{b.label}</option>
                   ))}
                 </select>
                 <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -243,18 +241,18 @@ const tq = t.quote;
             </div>
 
             <div class="form-group">
-              <label for="web-desc">Description du projet *</label>
-              <textarea id="web-desc" name="description" rows="5" placeholder="Décrivez vos objectifs, votre cible, votre identité…" required></textarea>
+              <label for="web-desc" data-i18n="quote.web.fields.desc">{tq.web.fields.desc}</label>
+              <textarea id="web-desc" name="description" rows="5" placeholder={tq.web.fields.descPh} data-i18n-placeholder="quote.web.fields.descPh" required></textarea>
             </div>
 
             <button type="submit" class="btn btn--primaire devis-submit">
-              <span>Envoyer ma demande</span>
+              <span data-i18n="quote.submit">{tq.submit}</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="22" y1="2" x2="11" y2="13"/>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"/>
               </svg>
             </button>
-            <p class="devis-note">Réponse garantie sous 24h. Aucun engagement.</p>
+            <p class="devis-note" data-i18n="quote.note">{tq.note}</p>
           </form>
 
           <!-- ── FORM : DATA ── -->
@@ -266,55 +264,55 @@ const tq = t.quote;
             hidden
           >
             <input type="hidden" name="service" value="data" />
-            <h2 class="form-titre">Reporting &amp; Data Analytics</h2>
-            <p class="form-sub">Parlons de vos données et de vos besoins de reporting.</p>
+            <h2 class="form-titre" data-i18n="quote.data.title">{tq.data.title}</h2>
+            <p class="form-sub" data-i18n="quote.data.sub">{tq.data.sub}</p>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="data-prenom">Prénom *</label>
-                <input type="text" id="data-prenom" name="prenom" placeholder="Votre prénom" required />
+                <label for="data-prenom" data-i18n="quote.data.fields.firstname">{tq.data.fields.firstname}</label>
+                <input type="text" id="data-prenom" name="prenom" placeholder={tq.data.fields.firstnamePh} data-i18n-placeholder="quote.data.fields.firstnamePh" required />
               </div>
               <div class="form-group">
-                <label for="data-nom">Nom *</label>
-                <input type="text" id="data-nom" name="nom" placeholder="Votre nom" required />
+                <label for="data-nom" data-i18n="quote.data.fields.lastname">{tq.data.fields.lastname}</label>
+                <input type="text" id="data-nom" name="nom" placeholder={tq.data.fields.lastnamePh} data-i18n-placeholder="quote.data.fields.lastnamePh" required />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="data-email">Email *</label>
-                <input type="email" id="data-email" name="email" placeholder="votre@email.fr" required />
+                <label for="data-email" data-i18n="quote.data.fields.email">{tq.data.fields.email}</label>
+                <input type="email" id="data-email" name="email" placeholder={tq.data.fields.emailPh} data-i18n-placeholder="quote.data.fields.emailPh" required />
               </div>
               <div class="form-group">
-                <label for="data-tel">Téléphone <span class="form-optionnel">(optionnel)</span></label>
-                <input type="tel" id="data-tel" name="telephone" placeholder="+33 6 12 34 56 78" />
+                <label for="data-tel"><span data-i18n="quote.data.fields.phone">{tq.data.fields.phone}</span> <span class="form-optionnel" data-i18n="quote.data.fields.phoneOpt">{tq.data.fields.phoneOpt}</span></label>
+                <input type="tel" id="data-tel" name="telephone" placeholder={tq.data.fields.phonePh} data-i18n-placeholder="quote.data.fields.phonePh" />
               </div>
             </div>
 
             <div class="form-group">
-              <label for="data-entreprise">Entreprise</label>
-              <input type="text" id="data-entreprise" name="entreprise" placeholder="Nom de votre entreprise" />
+              <label for="data-entreprise" data-i18n="quote.data.fields.company">{tq.data.fields.company}</label>
+              <input type="text" id="data-entreprise" name="entreprise" placeholder={tq.data.fields.companyPh} data-i18n-placeholder="quote.data.fields.companyPh" />
             </div>
 
             <div class="form-group">
-              <label>Sources de données</label>
+              <label data-i18n="quote.data.fields.sourcesLabel">{tq.data.fields.sourcesLabel}</label>
               <div class="chips-group">
-                {['Excel','SQL','API','ERP','CRM','Autre'].map((v) => (
+                {tq.data.fields.sourcesOptions.map((v, i) => (
                   <label class="chip">
                     <input type="checkbox" name="sources" value={v} />
-                    <span>{v}</span>
+                    <span data-i18n={`quote.data.fields.sourcesOptions.${i}`}>{v}</span>
                   </label>
                 ))}
               </div>
             </div>
 
             <div class="form-group">
-              <label>Outil cible *</label>
+              <label data-i18n="quote.data.fields.toolLabel">{tq.data.fields.toolLabel}</label>
               <div class="radio-cards">
-                {['Power BI','Looker Studio','Dashboard custom','À recommander'].map((v, i) => (
+                {tq.data.fields.toolOptions.map((v, i) => (
                   <label class="radio-card">
                     <input type="radio" name="outil" value={v} required={i === 0} />
-                    <span class="radio-card__inner">{v}</span>
+                    <span class="radio-card__inner" data-i18n={`quote.data.fields.toolOptions.${i}`}>{v}</span>
                   </label>
                 ))}
               </div>
@@ -322,27 +320,25 @@ const tq = t.quote;
 
             <div class="form-row">
               <div class="form-group">
-                <label for="data-volume">Volume de données</label>
+                <label for="data-volume" data-i18n="quote.data.fields.volume">{tq.data.fields.volume}</label>
                 <div class="select-wrap">
                   <select id="data-volume" name="volume">
-                    <option value="" disabled selected>Choisir…</option>
-                    <option>Petit (&lt; 10k lignes)</option>
-                    <option>Moyen (10k – 1M)</option>
-                    <option>Grand (&gt; 1M)</option>
-                    <option>Je ne sais pas</option>
+                    <option value="" disabled selected data-i18n="quote.data.fields.volumeChoose">{tq.data.fields.volumeChoose}</option>
+                    {tq.data.fields.volumeOptions.map((v, i) => (
+                      <option data-i18n={`quote.data.fields.volumeOptions.${i}`}>{v}</option>
+                    ))}
                   </select>
                   <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
               </div>
               <div class="form-group">
-                <label for="data-freq">Fréquence de mise à jour</label>
+                <label for="data-freq" data-i18n="quote.data.fields.freq">{tq.data.fields.freq}</label>
                 <div class="select-wrap">
                   <select id="data-freq" name="frequence">
-                    <option value="" disabled selected>Choisir…</option>
-                    <option>Temps réel</option>
-                    <option>Quotidien</option>
-                    <option>Hebdomadaire</option>
-                    <option>Mensuel</option>
+                    <option value="" disabled selected data-i18n="quote.data.fields.freqChoose">{tq.data.fields.freqChoose}</option>
+                    {tq.data.fields.freqOptions.map((v, i) => (
+                      <option data-i18n={`quote.data.fields.freqOptions.${i}`}>{v}</option>
+                    ))}
                   </select>
                   <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
@@ -350,12 +346,12 @@ const tq = t.quote;
             </div>
 
             <div class="form-group">
-              <label for="data-budget">Budget envisagé</label>
+              <label for="data-budget" data-i18n="quote.data.fields.budget">{tq.data.fields.budget}</label>
               <div class="select-wrap">
                 <select id="data-budget" name="budget">
-                  <option value="" disabled selected>Fourchette budgétaire…</option>
-                  {tq.budgets.map((b) => (
-                    <option value={b.value}>{b.label}</option>
+                  <option value="" disabled selected data-i18n="quote.data.fields.budgetPh">{tq.data.fields.budgetPh}</option>
+                  {tq.budgets.map((b, i) => (
+                    <option value={b.value} data-i18n={`quote.budgets.${i}.label`}>{b.label}</option>
                   ))}
                 </select>
                 <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -363,18 +359,18 @@ const tq = t.quote;
             </div>
 
             <div class="form-group">
-              <label for="data-desc">Description du besoin *</label>
-              <textarea id="data-desc" name="description" rows="5" placeholder="Décrivez vos sources, vos indicateurs clés, vos utilisateurs cibles…" required></textarea>
+              <label for="data-desc" data-i18n="quote.data.fields.desc">{tq.data.fields.desc}</label>
+              <textarea id="data-desc" name="description" rows="5" placeholder={tq.data.fields.descPh} data-i18n-placeholder="quote.data.fields.descPh" required></textarea>
             </div>
 
             <button type="submit" class="btn btn--primaire devis-submit">
-              <span>Envoyer ma demande</span>
+              <span data-i18n="quote.submit">{tq.submit}</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="22" y1="2" x2="11" y2="13"/>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"/>
               </svg>
             </button>
-            <p class="devis-note">Réponse garantie sous 24h. Aucun engagement.</p>
+            <p class="devis-note" data-i18n="quote.note">{tq.note}</p>
           </form>
 
           <!-- ── FORM : IA ── -->
@@ -386,75 +382,73 @@ const tq = t.quote;
             hidden
           >
             <input type="hidden" name="service" value="ia" />
-            <h2 class="form-titre">Agents IA &amp; Automatisation</h2>
-            <p class="form-sub">Décrivez la tâche à automatiser, on construit la solution.</p>
+            <h2 class="form-titre" data-i18n="quote.ia.title">{tq.ia.title}</h2>
+            <p class="form-sub" data-i18n="quote.ia.sub">{tq.ia.sub}</p>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="ia-prenom">Prénom *</label>
-                <input type="text" id="ia-prenom" name="prenom" placeholder="Votre prénom" required />
+                <label for="ia-prenom" data-i18n="quote.ia.fields.firstname">{tq.ia.fields.firstname}</label>
+                <input type="text" id="ia-prenom" name="prenom" placeholder={tq.ia.fields.firstnamePh} data-i18n-placeholder="quote.ia.fields.firstnamePh" required />
               </div>
               <div class="form-group">
-                <label for="ia-nom">Nom *</label>
-                <input type="text" id="ia-nom" name="nom" placeholder="Votre nom" required />
+                <label for="ia-nom" data-i18n="quote.ia.fields.lastname">{tq.ia.fields.lastname}</label>
+                <input type="text" id="ia-nom" name="nom" placeholder={tq.ia.fields.lastnamePh} data-i18n-placeholder="quote.ia.fields.lastnamePh" required />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="ia-email">Email *</label>
-                <input type="email" id="ia-email" name="email" placeholder="votre@email.fr" required />
+                <label for="ia-email" data-i18n="quote.ia.fields.email">{tq.ia.fields.email}</label>
+                <input type="email" id="ia-email" name="email" placeholder={tq.ia.fields.emailPh} data-i18n-placeholder="quote.ia.fields.emailPh" required />
               </div>
               <div class="form-group">
-                <label for="ia-tel">Téléphone <span class="form-optionnel">(optionnel)</span></label>
-                <input type="tel" id="ia-tel" name="telephone" placeholder="+33 6 12 34 56 78" />
+                <label for="ia-tel"><span data-i18n="quote.ia.fields.phone">{tq.ia.fields.phone}</span> <span class="form-optionnel" data-i18n="quote.ia.fields.phoneOpt">{tq.ia.fields.phoneOpt}</span></label>
+                <input type="tel" id="ia-tel" name="telephone" placeholder={tq.ia.fields.phonePh} data-i18n-placeholder="quote.ia.fields.phonePh" />
               </div>
             </div>
 
             <div class="form-group">
-              <label for="ia-entreprise">Entreprise</label>
-              <input type="text" id="ia-entreprise" name="entreprise" placeholder="Nom de votre entreprise" />
+              <label for="ia-entreprise" data-i18n="quote.ia.fields.company">{tq.ia.fields.company}</label>
+              <input type="text" id="ia-entreprise" name="entreprise" placeholder={tq.ia.fields.companyPh} data-i18n-placeholder="quote.ia.fields.companyPh" />
             </div>
 
             <div class="form-group">
-              <label>Type d'automatisation *</label>
+              <label data-i18n="quote.ia.fields.typeLabel">{tq.ia.fields.typeLabel}</label>
               <div class="radio-cards">
-                {['Agent conversationnel','Workflow automatisé','Traitement de documents','Analyse / Veille','Autre'].map((v, i) => (
+                {tq.ia.fields.typeOptions.map((v, i) => (
                   <label class="radio-card">
                     <input type="radio" name="type_auto" value={v} required={i === 0} />
-                    <span class="radio-card__inner">{v}</span>
+                    <span class="radio-card__inner" data-i18n={`quote.ia.fields.typeOptions.${i}`}>{v}</span>
                   </label>
                 ))}
               </div>
             </div>
 
             <div class="form-group">
-              <label for="ia-tache">Tâche à automatiser *</label>
-              <textarea id="ia-tache" name="tache" rows="3" placeholder="En 1 à 2 phrases : quelle tâche voulez-vous automatiser ?" required></textarea>
+              <label for="ia-tache" data-i18n="quote.ia.fields.task">{tq.ia.fields.task}</label>
+              <textarea id="ia-tache" name="tache" rows="3" placeholder={tq.ia.fields.taskPh} data-i18n-placeholder="quote.ia.fields.taskPh" required></textarea>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="ia-volume">Volume mensuel estimé</label>
+                <label for="ia-volume" data-i18n="quote.ia.fields.volume">{tq.ia.fields.volume}</label>
                 <div class="select-wrap">
                   <select id="ia-volume" name="volume_mensuel">
-                    <option value="" disabled selected>Choisir…</option>
-                    <option>&lt; 100 tâches</option>
-                    <option>100 – 1 000</option>
-                    <option>1 000 – 10 000</option>
-                    <option>&gt; 10 000</option>
-                    <option>Je ne sais pas</option>
+                    <option value="" disabled selected data-i18n="quote.ia.fields.volumeChoose">{tq.ia.fields.volumeChoose}</option>
+                    {tq.ia.fields.volumeOptions.map((v, i) => (
+                      <option data-i18n={`quote.ia.fields.volumeOptions.${i}`}>{v}</option>
+                    ))}
                   </select>
                   <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
               </div>
               <div class="form-group">
-                <label for="ia-budget">Budget envisagé</label>
+                <label for="ia-budget" data-i18n="quote.ia.fields.budget">{tq.ia.fields.budget}</label>
                 <div class="select-wrap">
                   <select id="ia-budget" name="budget">
-                    <option value="" disabled selected>Fourchette…</option>
-                    {tq.budgets.map((b) => (
-                      <option value={b.value}>{b.label}</option>
+                    <option value="" disabled selected data-i18n="quote.ia.fields.budgetPh">{tq.ia.fields.budgetPh}</option>
+                    {tq.budgets.map((b, i) => (
+                      <option value={b.value} data-i18n={`quote.budgets.${i}.label`}>{b.label}</option>
                     ))}
                   </select>
                   <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -463,30 +457,30 @@ const tq = t.quote;
             </div>
 
             <div class="form-group">
-              <label>Intégration requise</label>
+              <label data-i18n="quote.ia.fields.integrationsLabel">{tq.ia.fields.integrationsLabel}</label>
               <div class="chips-group">
-                {['Email','Slack','CRM','Base de données','API custom','Aucune'].map((v) => (
+                {tq.ia.fields.integrationsOptions.map((v, i) => (
                   <label class="chip">
                     <input type="checkbox" name="integrations" value={v} />
-                    <span>{v}</span>
+                    <span data-i18n={`quote.ia.fields.integrationsOptions.${i}`}>{v}</span>
                   </label>
                 ))}
               </div>
             </div>
 
             <div class="form-group">
-              <label for="ia-desc">Description du projet *</label>
-              <textarea id="ia-desc" name="description" rows="5" placeholder="Contexte, outils actuels, contraintes, résultat attendu…" required></textarea>
+              <label for="ia-desc" data-i18n="quote.ia.fields.desc">{tq.ia.fields.desc}</label>
+              <textarea id="ia-desc" name="description" rows="5" placeholder={tq.ia.fields.descPh} data-i18n-placeholder="quote.ia.fields.descPh" required></textarea>
             </div>
 
             <button type="submit" class="btn btn--primaire devis-submit">
-              <span>Envoyer ma demande</span>
+              <span data-i18n="quote.submit">{tq.submit}</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="22" y1="2" x2="11" y2="13"/>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"/>
               </svg>
             </button>
-            <p class="devis-note">Réponse garantie sous 24h. Aucun engagement.</p>
+            <p class="devis-note" data-i18n="quote.note">{tq.note}</p>
           </form>
 
         </div>
@@ -494,14 +488,14 @@ const tq = t.quote;
         <!-- ASIDE — étapes + garanties -->
         <aside class="devis-aside">
           <div class="aside-bloc">
-            <h3 class="aside-bloc__title">{tq.howTitle}</h3>
+            <h3 class="aside-bloc__title" data-i18n="quote.howTitle">{tq.howTitle}</h3>
             <div class="aside-steps">
               {tq.steps.map((s, i) => (
                 <div class="aside-step">
                   <span class="aside-step__num">{i + 1}</span>
                   <div>
-                    <p class="aside-step__title">{s.title}</p>
-                    <p class="aside-step__desc">{s.desc}</p>
+                    <p class="aside-step__title" data-i18n={`quote.steps.${i}.title`}>{s.title}</p>
+                    <p class="aside-step__desc" data-i18n={`quote.steps.${i}.desc`}>{s.desc}</p>
                   </div>
                 </div>
               ))}
@@ -509,11 +503,11 @@ const tq = t.quote;
           </div>
 
           <div class="aside-bloc aside-bloc--accent">
-            <h3 class="aside-bloc__title">{tq.guaranteesTitle}</h3>
-            {tq.guarantees.map((g) => (
+            <h3 class="aside-bloc__title" data-i18n="quote.guaranteesTitle">{tq.guaranteesTitle}</h3>
+            {tq.guarantees.map((g, i) => (
               <div class="aside-guarantee">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>{g}</span>
+                <span data-i18n={`quote.guarantees.${i}`}>{g}</span>
               </div>
             ))}
           </div>

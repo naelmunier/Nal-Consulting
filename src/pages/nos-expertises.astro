@@ -1,42 +1,41 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import { translations } from '../i18n/translations';
+const t = translations.fr;
 
-// Données features Web (section 1)
-const webFeatures = [
-  { title: 'Ultra-rapide',  desc: 'LCP < 1.2s',            svg: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>' },
-  { title: 'Responsive',    desc: '50+ appareils',         svg: '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>' },
-  { title: 'SEO technique', desc: 'Schema.org, balises OG',svg: '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>' },
-  { title: 'Sécurisé',      desc: 'HTTPS, RGPD',           svg: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>' },
-  { title: 'Accessible',    desc: 'WCAG 2.1 AA',           svg: '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>' },
-  { title: 'CI/CD',         desc: 'Déploiement continu',   svg: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>' },
+// SVG icons + meta (non-traduisibles) — combinés avec t.expertises.webFeatures pour le rendu
+const webFeatureSvgs = [
+  '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+  '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>',
+  '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+  '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+  '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
 ];
+const webFeatures = t.expertises.webFeatures.map((f, i) => ({ ...f, svg: webFeatureSvgs[i] }));
 
-// Données features Data (section 2)
-const dataFeatures = [
-  { title: 'Temps réel',    desc: 'Données live',              svg: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>' },
-  { title: 'Connecté',      desc: 'Excel, SQL, API, ERP',      svg: '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>' },
-  { title: 'Multi-support', desc: 'Mobile, tablette, desktop', svg: '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>' },
-  { title: 'Automatisé',    desc: 'Rapports planifiés',        svg: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>' },
-  { title: 'Prédictif',     desc: 'Analyses ML',               svg: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>' },
-  { title: 'Alertes',       desc: 'KPIs seuil',                svg: '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>' },
+const dataFeatureSvgs = [
+  '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+  '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>',
+  '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
+  '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+  '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',
 ];
+const dataFeatures = t.expertises.dataFeatures.map((f, i) => ({ ...f, svg: dataFeatureSvgs[i] }));
 
-// Données agents IA (section 3)
-const agents = [
-  { name: 'Agent Email',       badge: 'Automation', badgeClass: '',                     accent: '#6B91D4', desc: 'Triage, classification et réponse automatique aux emails entrants. -90% de temps de traitement.', gain: '2 min vs 20 min par email',    svg: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>' },
-  { name: 'Agent Reporting',   badge: 'Data',       badgeClass: 'agent-card__badge--data',accent: '#A0B4DE', desc: 'Connexion aux sources, extraction, mise en forme et envoi automatique chaque semaine.',       gain: 'Rapport hebdo en 30 secondes', svg: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>' },
-  { name: 'Agent Veille',      badge: 'IA',         badgeClass: 'agent-card__badge--ia',  accent: '#4a70c0', desc: 'Scan de 200+ sources, filtrage intelligent et synthèse quotidienne dans Slack ou Teams.',     gain: '5 min/jour au lieu de 3h',     svg: '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>' },
-  { name: 'Agent Support',     badge: 'Customer',   badgeClass: '',                       accent: '#7c9ed8', desc: "Répond aux questions fréquentes 24h/24 en s'appuyant sur votre base de connaissances.",        gain: 'Disponible 24h/24 · 7j/7',     svg: '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>' },
-  { name: 'Agent Prospection', badge: 'Sales',      badgeClass: 'agent-card__badge--sales',accent: '#5a80c8', desc: 'Enrichit votre CRM, rédige des messages personnalisés et qualifie les leads entrants.',     gain: '+40% de leads qualifiés',      svg: '<circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/>' },
+const agentMeta = [
+  { badgeClass: '',                          accent: '#6B91D4', svg: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>' },
+  { badgeClass: 'agent-card__badge--data',   accent: '#A0B4DE', svg: '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>' },
+  { badgeClass: 'agent-card__badge--ia',     accent: '#4a70c0', svg: '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>' },
+  { badgeClass: '',                          accent: '#7c9ed8', svg: '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>' },
+  { badgeClass: 'agent-card__badge--sales',  accent: '#5a80c8', svg: '<circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/>' },
 ];
+const agents = t.expertises.agents.map((a, i) => ({ ...a, ...agentMeta[i] }));
 
 // Lighthouse
-const lhMetrics = [
-  { label: 'Performance',    score: 98 },
-  { label: 'Accessibilité',  score: 96 },
-  { label: 'SEO',            score: 99 },
-  { label: 'Best Practices', score: 92 },
-];
+const lhScores = [98, 96, 99, 92];
+const lhMetrics = t.expertises.lighthouse.metrics.map((label, i) => ({ label, score: lhScores[i] }));
 ---
 
 <MainLayout title="Nos Expertises — Nal Consulting">
@@ -46,13 +45,13 @@ const lhMetrics = [
 
   <!-- ─── SIDEBAR TOC ─── -->
   <aside class="exp-toc" aria-label="Sommaire expertises">
-    <p class="exp-toc__titre">Nos expertises</p>
+    <p class="exp-toc__titre" data-i18n="expertises.toc.title">{t.expertises.toc.title}</p>
     <nav class="exp-toc__nav">
-      <a href="#web"  class="exp-toc__lien active" data-section="web">Sites &amp; SEO</a>
-      <a href="#data" class="exp-toc__lien"        data-section="data">Analyse de données</a>
-      <a href="#ia"   class="exp-toc__lien"        data-section="ia">Agents IA</a>
+      <a href="#web"  class="exp-toc__lien active" data-section="web" data-i18n="expertises.toc.web">{t.expertises.toc.web}</a>
+      <a href="#data" class="exp-toc__lien"        data-section="data" data-i18n="expertises.toc.data">{t.expertises.toc.data}</a>
+      <a href="#ia"   class="exp-toc__lien"        data-section="ia" data-i18n="expertises.toc.ia">{t.expertises.toc.ia}</a>
     </nav>
-    <a href="/devis" class="btn btn--primaire exp-toc__cta">Démarrer un projet →</a>
+    <a href="/devis" class="btn btn--primaire exp-toc__cta" data-i18n="expertises.toc.cta">{t.expertises.toc.cta}</a>
   </aside>
 
   <!-- ─── CONTENU PRINCIPAL ─── -->
@@ -60,18 +59,12 @@ const lhMetrics = [
 
     <!-- ═══ INTRO : Word-Reveal ═══ -->
     <section class="exp-intro" id="expIntro" aria-label="Introduction">
-      <span class="eyebrow">Nos expertises</span>
-      <h1 class="exp-intro__text">
-        <span class="wr">Trois</span> <span class="wr">pôles.</span>
-        <span class="wr">Un</span> <span class="wr">objectif :</span>
-        <span class="wr wr--accent">transformer</span> <span class="wr">vos</span> <span class="wr">idées</span>
-        <span class="wr">en</span> <span class="wr wr--accent">résultats</span> <span class="wr">mesurables.</span>
-      </h1>
-      <p class="exp-intro__sub">
-        <span class="wr">Du</span> <span class="wr">site</span> <span class="wr">qui</span> <span class="wr">convertit</span>
-        <span class="wr">au</span> <span class="wr">dashboard</span> <span class="wr">qui</span> <span class="wr">pilote,</span>
-        <span class="wr">jusqu'à</span> <span class="wr">l'agent</span> <span class="wr">IA</span> <span class="wr">qui</span> <span class="wr">automatise.</span>
-      </p>
+      <span class="eyebrow" data-i18n="expertises.intro.eyebrow">{t.expertises.intro.eyebrow}</span>
+      <h1 class="exp-intro__text exp-intro__line" data-i18n="expertises.intro.line1">{t.expertises.intro.line1}</h1>
+      {t.expertises.intro.line2 && (
+        <h1 class="exp-intro__text exp-intro__line" data-i18n="expertises.intro.line2">{t.expertises.intro.line2}</h1>
+      )}
+      <p class="exp-intro__sub" data-i18n="expertises.intro.sub">{t.expertises.intro.sub}</p>
     </section>
 
     <!-- ═══ SECTION 1 : SITES & SEO ═══ -->
@@ -127,29 +120,29 @@ const lhMetrics = [
         <!-- Colonne droite -->
         <div class="web-right-col">
           <div class="web-heading">
-            <span class="eyebrow">Expertise 01</span>
+            <span class="eyebrow" data-i18n="expertises.web.eyebrow">{t.expertises.web.eyebrow}</span>
             <h2 class="web-titre">
-              Sites Internet &amp; SEO<br/>
-              <span class="grad-text">Référencement inclus.</span>
+              <span data-i18n="expertises.web.title">{t.expertises.web.title}</span><br/>
+              <span class="grad-text" data-i18n="expertises.web.titleGrad">{t.expertises.web.titleGrad}</span>
             </h2>
-            <p class="sous-titre">Des sites conçus pour convertir — rapides, accessibles, premiers sur Google.</p>
+            <p class="sous-titre" data-i18n="expertises.web.sub">{t.expertises.web.sub}</p>
           </div>
 
           <!-- Lighthouse rings BIG, grid 2x2 -->
           <div class="lh-big-wrap" id="lhWrap">
             <div class="lh-big-head">
-              <p class="lh-big-title">Scores Lighthouse</p>
-              <span class="lh-big-badge">Audit temps réel</span>
+              <p class="lh-big-title" data-i18n="expertises.lighthouse.title">{t.expertises.lighthouse.title}</p>
+              <span class="lh-big-badge" data-i18n="expertises.lighthouse.badge">{t.expertises.lighthouse.badge}</span>
             </div>
             <div class="lh-big-grid">
-              {lhMetrics.map(m => (
+              {lhMetrics.map((m, i) => (
                 <div class="lh-big-ring-wrap">
                   <svg class="lh-big-ring" viewBox="0 0 160 160">
                     <circle class="lh-big-ring__bg"   cx="80" cy="80" r="64"/>
                     <circle class="lh-big-ring__fill" cx="80" cy="80" r="64" data-score={m.score}/>
                     <text x="80" y="88" class="lh-big-ring__num" data-score={m.score}>0</text>
                   </svg>
-                  <p class="lh-big-ring__label">{m.label}</p>
+                  <p class="lh-big-ring__label" data-i18n={`expertises.lighthouse.metrics.${i}`}>{m.label}</p>
                 </div>
               ))}
             </div>
@@ -167,8 +160,8 @@ const lhMetrics = [
             {webFeatures.map((f, i) => (
               <div class="circ-card" data-idx={i}>
                 <span class="circ-card__ico" set:html={`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${f.svg}</svg>`}></span>
-                <h4 class="circ-card__title">{f.title}</h4>
-                <p class="circ-card__desc">{f.desc}</p>
+                <h4 class="circ-card__title" data-i18n={`expertises.webFeatures.${i}.title`}>{f.title}</h4>
+                <p class="circ-card__desc" data-i18n={`expertises.webFeatures.${i}.desc`}>{f.desc}</p>
               </div>
             ))}
           </div>
@@ -185,12 +178,12 @@ const lhMetrics = [
     <!-- ═══ SECTION 2 : DATA ═══ -->
     <section class="exp-section" id="data">
       <div class="exp-section-head">
-        <span class="eyebrow">Expertise 02</span>
+        <span class="eyebrow" data-i18n="expertises.data.eyebrow">{t.expertises.data.eyebrow}</span>
         <h2 class="exp-section-titre">
-          Reporting &amp; Data Analytics<br/>
-          <span class="grad-text">Vos données, enfin lisibles.</span>
+          <span data-i18n="expertises.data.title">{t.expertises.data.title}</span><br/>
+          <span class="grad-text" data-i18n="expertises.data.titleGrad">{t.expertises.data.titleGrad}</span>
         </h2>
-        <p class="sous-titre">Des dashboards interactifs — décidez mieux, plus vite.</p>
+        <p class="sous-titre" data-i18n="expertises.data.sub">{t.expertises.data.sub}</p>
       </div>
 
       <!-- Grid charts -->
@@ -200,25 +193,25 @@ const lhMetrics = [
         <div class="chart-card">
           <div class="chart-card__header">
             <div>
-              <p class="chart-card__title">Croissance mensuelle</p>
-              <p class="chart-card__sub">Revenus 2024</p>
+              <p class="chart-card__title" data-i18n="expertises.dataCharts.growthTitle">{t.expertises.dataCharts.growthTitle}</p>
+              <p class="chart-card__sub" data-i18n="expertises.dataCharts.growthSub">{t.expertises.dataCharts.growthSub}</p>
             </div>
-            <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+            <div class="live-badge"><span class="live-dot"></span><span data-i18n="expertises.dataCharts.live">{t.expertises.dataCharts.live}</span></div>
           </div>
           <div class="bar-chart-wrap">
             <div class="bar-chart-area">
               <div class="bc-bars" id="bcBars">
                 {[
-                  { m:'Jan', h:48 },
-                  { m:'Fév', h:60 },
-                  { m:'Mar', h:54 },
-                  { m:'Avr', h:74 },
-                  { m:'Mai', h:87 },
-                  { m:'Jun', h:98 },
-                ].map((b) => (
+                  { h:48 },
+                  { h:60 },
+                  { h:54 },
+                  { h:74 },
+                  { h:87 },
+                  { h:98 },
+                ].map((b, i) => (
                   <div class="bc-col">
                     <div class="bc-bar" style={`--h:${b.h}%`}></div>
-                    <span class="bc-month">{b.m}</span>
+                    <span class="bc-month" data-i18n={`expertises.dataCharts.months.${i}`}>{t.expertises.dataCharts.months[i]}</span>
                   </div>
                 ))}
               </div>
@@ -230,10 +223,10 @@ const lhMetrics = [
         <div class="chart-card">
           <div class="chart-card__header">
             <div>
-              <p class="chart-card__title">Répartition projets</p>
-              <p class="chart-card__sub">Par type · 2024</p>
+              <p class="chart-card__title" data-i18n="expertises.dataCharts.repartitionTitle">{t.expertises.dataCharts.repartitionTitle}</p>
+              <p class="chart-card__sub" data-i18n="expertises.dataCharts.repartitionSub">{t.expertises.dataCharts.repartitionSub}</p>
             </div>
-            <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+            <div class="live-badge"><span class="live-dot"></span><span data-i18n="expertises.dataCharts.live">{t.expertises.dataCharts.live}</span></div>
           </div>
           <div class="donut-wrap">
             <div class="donut-chart-wrap">
@@ -244,13 +237,13 @@ const lhMetrics = [
                   <circle class="dc-seg" cx="80" cy="80" r="60" style="--pct:25; --off:75; --col:#4a70c0"/>
                 </g>
                 <text x="80" y="75"  class="dc-center-num">50+</text>
-                <text x="80" y="92"  class="dc-center-label">projets</text>
+                <text x="80" y="92"  class="dc-center-label" data-i18n="expertises.dataCharts.projectsLabel">{t.expertises.dataCharts.projectsLabel}</text>
               </svg>
             </div>
             <div class="donut-legend">
-              <div class="dl-item"><span class="dl-dot" style="background:#6B91D4"></span>Power BI</div>
-              <div class="dl-item"><span class="dl-dot" style="background:#A0B4DE"></span>Python</div>
-              <div class="dl-item"><span class="dl-dot" style="background:#4a70c0"></span>Rapports auto</div>
+              <div class="dl-item"><span class="dl-dot" style="background:#6B91D4"></span><span data-i18n="expertises.dataCharts.legend1">{t.expertises.dataCharts.legend1}</span></div>
+              <div class="dl-item"><span class="dl-dot" style="background:#A0B4DE"></span><span data-i18n="expertises.dataCharts.legend2">{t.expertises.dataCharts.legend2}</span></div>
+              <div class="dl-item"><span class="dl-dot" style="background:#4a70c0"></span><span data-i18n="expertises.dataCharts.legend3">{t.expertises.dataCharts.legend3}</span></div>
             </div>
           </div>
         </div>
@@ -259,13 +252,13 @@ const lhMetrics = [
         <div class="chart-card chart-card--line">
           <div class="chart-card__header">
             <div>
-              <p class="chart-card__title">Performance opérationnelle</p>
-              <p class="chart-card__sub">Indice composite · Avant / après BI</p>
+              <p class="chart-card__title" data-i18n="expertises.dataCharts.perfTitle">{t.expertises.dataCharts.perfTitle}</p>
+              <p class="chart-card__sub" data-i18n="expertises.dataCharts.perfSub">{t.expertises.dataCharts.perfSub}</p>
             </div>
             <div class="chart-legend-inline">
-              <span class="chart-legend-inline__item"><span class="cli-dash cli-dash--before"></span>Avant</span>
-              <span class="chart-legend-inline__item"><span class="cli-dash cli-dash--after"></span>Après</span>
-              <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+              <span class="chart-legend-inline__item"><span class="cli-dash cli-dash--before"></span><span data-i18n="expertises.dataCharts.before">{t.expertises.dataCharts.before}</span></span>
+              <span class="chart-legend-inline__item"><span class="cli-dash cli-dash--after"></span><span data-i18n="expertises.dataCharts.after">{t.expertises.dataCharts.after}</span></span>
+              <div class="live-badge"><span class="live-dot"></span><span data-i18n="expertises.dataCharts.live">{t.expertises.dataCharts.live}</span></div>
             </div>
           </div>
 
@@ -300,12 +293,12 @@ const lhMetrics = [
               <!-- Axe X -->
               <g class="lc-axis-x">
                 <line class="lc-axis-line" x1="60" y1="240" x2="700" y2="240"/>
-                {['Jan','Fév','Mar','Avr','Mai','Jun','Jul'].map((m, i) => {
+                {t.expertises.dataCharts.months.map((m, i) => {
                   const x = 60 + (640 / 6) * i;
                   return (
                     <g>
                       <line class="lc-tick" x1={x} y1="240" x2={x} y2="244"/>
-                      <text class="lc-axis-label" x={x} y="262" text-anchor="middle">{m}</text>
+                      <text class="lc-axis-label" x={x} y="262" text-anchor="middle" data-i18n={`expertises.dataCharts.months.${i}`}>{m}</text>
                     </g>
                   );
                 })}
@@ -379,15 +372,15 @@ const lhMetrics = [
           <div class="lc-stats">
             <div class="lc-stat">
               <span class="lc-stat__num">×3.8</span>
-              <span class="lc-stat__lbl">Vitesse de décision</span>
+              <span class="lc-stat__lbl" data-i18n="expertises.dataCharts.statSpeed">{t.expertises.dataCharts.statSpeed}</span>
             </div>
             <div class="lc-stat lc-stat--sep">
               <span class="lc-stat__num">−72<span class="lc-stat__unit">%</span></span>
-              <span class="lc-stat__lbl">Temps de reporting</span>
+              <span class="lc-stat__lbl" data-i18n="expertises.dataCharts.statReport">{t.expertises.dataCharts.statReport}</span>
             </div>
             <div class="lc-stat lc-stat--sep">
               <span class="lc-stat__num">+62<span class="lc-stat__unit">%</span></span>
-              <span class="lc-stat__lbl">Gain opérationnel</span>
+              <span class="lc-stat__lbl" data-i18n="expertises.dataCharts.statGain">{t.expertises.dataCharts.statGain}</span>
             </div>
           </div>
         </div>
@@ -404,8 +397,8 @@ const lhMetrics = [
             {dataFeatures.map((f, i) => (
               <div class="circ-card" data-idx={i}>
                 <span class="circ-card__ico" set:html={`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${f.svg}</svg>`}></span>
-                <h4 class="circ-card__title">{f.title}</h4>
-                <p class="circ-card__desc">{f.desc}</p>
+                <h4 class="circ-card__title" data-i18n={`expertises.dataFeatures.${i}.title`}>{f.title}</h4>
+                <p class="circ-card__desc" data-i18n={`expertises.dataFeatures.${i}.desc`}>{f.desc}</p>
               </div>
             ))}
           </div>
@@ -422,17 +415,17 @@ const lhMetrics = [
     <!-- ═══ SECTION 3 : IA (fond clair) ═══ -->
     <section class="exp-section exp-section--ia" id="ia">
       <div class="exp-section-head">
-        <span class="eyebrow">Expertise 03</span>
+        <span class="eyebrow" data-i18n="expertises.ia.eyebrow">{t.expertises.ia.eyebrow}</span>
         <h2 class="exp-section-titre">
-          Automatisations &amp; Agents IA<br/>
-          <span class="grad-text">Vos process automatisés.</span>
+          <span data-i18n="expertises.ia.title">{t.expertises.ia.title}</span><br/>
+          <span class="grad-text" data-i18n="expertises.ia.titleGrad">{t.expertises.ia.titleGrad}</span>
         </h2>
-        <p class="sous-titre">Des agents intelligents opérationnels 24h/24 — du simple workflow à l'orchestration multi-agents.</p>
+        <p class="sous-titre" data-i18n="expertises.ia.sub">{t.expertises.ia.sub}</p>
       </div>
 
       <!-- Workflow diagram -->
       <div class="workflow-section">
-        <p class="workflow-label">Architecture d'un agent IA Nal Consulting</p>
+        <p class="workflow-label" data-i18n="expertises.iaWorkflow.title">{t.expertises.iaWorkflow.title}</p>
         <div class="workflow-diagram" id="workflowDiagram">
           <div class="wf-row wf-row--main">
 
@@ -440,13 +433,13 @@ const lhMetrics = [
               <div class="wf-node__ico">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               </div>
-              <strong>Entrée</strong>
-              <span>Email / Formulaire<br/>Fichier / API / DB</span>
+              <strong data-i18n="expertises.iaWorkflow.nodes.input">{t.expertises.iaWorkflow.nodes.input}</strong>
+              <span data-i18n-html="expertises.iaWorkflow.nodes.inputSub" set:html={t.expertises.iaWorkflow.nodes.inputSub.replace(/\n/g, '<br/>')}></span>
             </div>
 
             <div class="wf-arrow wf-arrow--animated">
               <svg viewBox="0 0 120 30" preserveAspectRatio="none"><path d="M0,15 L98,15" class="arrow-line"/><polygon points="98,8 120,15 98,22" class="arrow-head"/></svg>
-              <span class="wf-step-label">Analyse</span>
+              <span class="wf-step-label" data-i18n="expertises.iaWorkflow.steps.analyse">{t.expertises.iaWorkflow.steps.analyse}</span>
             </div>
 
             <div class="wf-node wf-node--agent">
@@ -454,35 +447,35 @@ const lhMetrics = [
               <div class="wf-node__ico wf-node__ico--pulse">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
               </div>
-              <strong>LLM Agent</strong>
-              <span>Claude / GPT-4<br/>Raisonnement &amp; Plan</span>
-              <div class="wf-node__badge">IA</div>
+              <strong data-i18n="expertises.iaWorkflow.nodes.agent">{t.expertises.iaWorkflow.nodes.agent}</strong>
+              <span data-i18n-html="expertises.iaWorkflow.nodes.agentSub" set:html={t.expertises.iaWorkflow.nodes.agentSub.replace(/\n/g, '<br/>')}></span>
+              <div class="wf-node__badge" data-i18n="expertises.iaWorkflow.badge">{t.expertises.iaWorkflow.badge}</div>
             </div>
 
             <div class="wf-arrow wf-arrow--animated" style="animation-delay:.3s">
               <svg viewBox="0 0 120 30" preserveAspectRatio="none"><path d="M0,15 L98,15" class="arrow-line"/><polygon points="98,8 120,15 98,22" class="arrow-head"/></svg>
-              <span class="wf-step-label">Exécution</span>
+              <span class="wf-step-label" data-i18n="expertises.iaWorkflow.steps.execute">{t.expertises.iaWorkflow.steps.execute}</span>
             </div>
 
             <div class="wf-node wf-node--tools">
               <div class="wf-node__ico">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
               </div>
-              <strong>Outils</strong>
-              <span>APIs · Code · SQL</span>
+              <strong data-i18n="expertises.iaWorkflow.nodes.tools">{t.expertises.iaWorkflow.nodes.tools}</strong>
+              <span data-i18n-html="expertises.iaWorkflow.nodes.toolsSub" set:html={t.expertises.iaWorkflow.nodes.toolsSub.replace(/\n/g, '<br/>')}></span>
             </div>
 
             <div class="wf-arrow wf-arrow--animated" style="animation-delay:.6s">
               <svg viewBox="0 0 120 30" preserveAspectRatio="none"><path d="M0,15 L98,15" class="arrow-line"/><polygon points="98,8 120,15 98,22" class="arrow-head"/></svg>
-              <span class="wf-step-label">Résultat</span>
+              <span class="wf-step-label" data-i18n="expertises.iaWorkflow.steps.result">{t.expertises.iaWorkflow.steps.result}</span>
             </div>
 
             <div class="wf-node wf-node--output">
               <div class="wf-node__ico">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               </div>
-              <strong>Sortie</strong>
-              <span>Rapport / Email<br/>Action / Dashboard</span>
+              <strong data-i18n="expertises.iaWorkflow.nodes.output">{t.expertises.iaWorkflow.nodes.output}</strong>
+              <span data-i18n-html="expertises.iaWorkflow.nodes.outputSub" set:html={t.expertises.iaWorkflow.nodes.outputSub.replace(/\n/g, '<br/>')}></span>
             </div>
 
           </div>
@@ -490,15 +483,15 @@ const lhMetrics = [
           <div class="wf-row wf-row--sub">
             <div class="wf-sub-node">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-              Mémoire
+              <span data-i18n="expertises.iaWorkflow.subNodes.memory">{t.expertises.iaWorkflow.subNodes.memory}</span>
             </div>
             <div class="wf-sub-node">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-              RAG / Base de connaissances
+              <span data-i18n="expertises.iaWorkflow.subNodes.rag">{t.expertises.iaWorkflow.subNodes.rag}</span>
             </div>
             <div class="wf-sub-node">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-              Monitoring &amp; Logs
+              <span data-i18n="expertises.iaWorkflow.subNodes.monitor">{t.expertises.iaWorkflow.subNodes.monitor}</span>
             </div>
           </div>
         </div>
@@ -506,7 +499,7 @@ const lhMetrics = [
 
       <!-- Carousel circulaire agents IA -->
       <div class="circ-carousel-section">
-        <p class="agents-carousel-title">Agents déployés en production</p>
+        <p class="agents-carousel-title" data-i18n="expertises.agentsTitle">{t.expertises.agentsTitle}</p>
         <div class="circ-carousel circ-carousel--agents" data-carousel="ia">
           <button class="circ-nav circ-nav--prev" data-dir="prev" aria-label="Précédent">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -517,11 +510,11 @@ const lhMetrics = [
                 <div class="agent-card__top-border"></div>
                 <div class="agent-card__header">
                   <span class="agent-card__ico" set:html={`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${a.svg}</svg>`}></span>
-                  <h3 class="agent-card__name">{a.name}</h3>
-                  <span class={`agent-card__badge ${a.badgeClass}`}>{a.badge}</span>
+                  <h3 class="agent-card__name" data-i18n={`expertises.agents.${i}.name`}>{a.name}</h3>
+                  <span class={`agent-card__badge ${a.badgeClass}`} data-i18n={`expertises.agents.${i}.badge`}>{a.badge}</span>
                 </div>
-                <p class="agent-card__desc">{a.desc}</p>
-                <div class="agent-card__gain"><span>⚡ {a.gain}</span></div>
+                <p class="agent-card__desc" data-i18n={`expertises.agents.${i}.desc`}>{a.desc}</p>
+                <div class="agent-card__gain"><span>⚡ <span data-i18n={`expertises.agents.${i}.gain`}>{a.gain}</span></span></div>
               </div>
             ))}
           </div>
@@ -543,14 +536,14 @@ const lhMetrics = [
   <div class="exp-cta__blob exp-cta__blob--1" aria-hidden="true"></div>
   <div class="exp-cta__blob exp-cta__blob--2" aria-hidden="true"></div>
   <div class="container exp-cta__inner">
-    <span class="eyebrow eyebrow--blanc">Prêt à passer à l'action ?</span>
-    <h2 class="titre-section titre-section--clair">Un projet en tête ?<br/><span>Parlons-en.</span></h2>
-    <p class="sous-titre sous-titre--clair">
-      Échange de 30 minutes, sans engagement — on analyse votre besoin et vous proposons une solution sous 48h.
+    <span class="eyebrow eyebrow--blanc" data-i18n="expertises.expCta.eyebrow">{t.expertises.expCta.eyebrow}</span>
+    <h2 class="titre-section titre-section--clair"><span data-i18n="expertises.expCta.line1">{t.expertises.expCta.line1}</span><br/><span data-i18n="expertises.expCta.line2">{t.expertises.expCta.line2}</span></h2>
+    <p class="sous-titre sous-titre--clair" data-i18n="expertises.expCta.sub">
+      {t.expertises.expCta.sub}
     </p>
     <div class="exp-cta__btns">
-      <a href="/devis"   class="btn btn--primaire">Démarrer un projet →</a>
-      <a href="/contact" class="btn btn--outline-blanc">Nous contacter</a>
+      <a href="/devis"   class="btn btn--primaire" data-i18n="expertises.expCta.primary">{t.expertises.expCta.primary}</a>
+      <a href="/contact" class="btn btn--outline-blanc" data-i18n="expertises.expCta.secondary">{t.expertises.expCta.secondary}</a>
     </div>
   </div>
 </section>

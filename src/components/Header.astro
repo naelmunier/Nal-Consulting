@@ -14,9 +14,9 @@ const pathname = Astro.url.pathname;
     <nav class="header__nav" aria-label="Navigation principale">
       <ul class="header__nav-list">
         <li><a href="/"               class={`header__nav-link ${pathname === '/'               ? 'active' : ''}`} data-i18n="nav.home">Accueil</a></li>
-        <li><a href="/nos-expertises" class={`header__nav-link ${pathname.startsWith('/nos-expertises') ? 'active' : ''}`}>Nos Services</a></li>
+        <li><a href="/nos-expertises" class={`header__nav-link ${pathname.startsWith('/nos-expertises') ? 'active' : ''}`} data-i18n="nav.services">Nos Services</a></li>
         <li><a href="/devis"          class={`header__nav-link ${pathname === '/devis'          ? 'active' : ''}`} data-i18n="nav.quote">Devis</a></li>
-        <li><a href="/qui-sommes-nous" class={`header__nav-link ${pathname === '/qui-sommes-nous' ? 'active' : ''}`}>Notre Histoire</a></li>
+        <li><a href="/qui-sommes-nous" class={`header__nav-link ${pathname === '/qui-sommes-nous' ? 'active' : ''}`} data-i18n="nav.history">Notre Histoire</a></li>
         <li><a href="/contact"        class={`header__nav-link ${pathname === '/contact'        ? 'active' : ''}`} data-i18n="nav.contact">Contact</a></li>
       </ul>
     </nav>
@@ -47,9 +47,9 @@ const pathname = Astro.url.pathname;
   <div class="header__mobile" id="mobileMenu" aria-hidden="true">
     <ul class="header__mobile-list">
       <li><a href="/"               class="header__mobile-link" data-i18n="nav.home">Accueil</a></li>
-      <li><a href="/nos-expertises" class="header__mobile-link">Nos Services</a></li>
+      <li><a href="/nos-expertises" class="header__mobile-link" data-i18n="nav.services">Nos Services</a></li>
       <li><a href="/devis"          class="header__mobile-link" data-i18n="nav.quote">Devis</a></li>
-      <li><a href="/qui-sommes-nous" class="header__mobile-link">Notre Histoire</a></li>
+      <li><a href="/qui-sommes-nous" class="header__mobile-link" data-i18n="nav.history">Notre Histoire</a></li>
       <li><a href="/contact"        class="header__mobile-link" data-i18n="nav.contact">Contact</a></li>
       <li class="header__mobile-sep">
         <button class="lang-switcher lang-switcher--mobile" id="langBtnMobile" aria-label="Changer la langue">

@@ -113,6 +113,21 @@ const t_en = translations.en;
           const val = resolveKey(t, key);
           if (typeof val === 'string' && el instanceof HTMLAnchorElement) el.href = val;
         });
+
+        // data-i18n-words : met à jour data-words et purge l'état du splitter pour relancer la cascade
+        document.querySelectorAll<HTMLElement>('[data-i18n-words]').forEach((el) => {
+          const key = el.getAttribute('data-i18n-words')!;
+          const val = resolveKey(t, key);
+          if (typeof val === 'string') {
+            el.setAttribute('data-words', val);
+            el.removeAttribute('data-split');
+            el.removeAttribute('data-revealed');
+            el.textContent = '';
+          }
+        });
+
+        // Notifier les pages que les traductions viennent d'être appliquées
+        document.dispatchEvent(new CustomEvent('i18n:applied', { detail: { lang } }));
       }
 
       function resolveKey(obj: Record<string, unknown>, key: string): unknown {

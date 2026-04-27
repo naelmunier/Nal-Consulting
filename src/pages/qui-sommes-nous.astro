@@ -1,5 +1,8 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import { translations } from '../i18n/translations';
+const t = translations.fr;
+const a = t.about;
 ---
 
 <MainLayout title="Notre Histoire — Nal Consulting">
@@ -14,11 +17,11 @@ import MainLayout from '../layouts/MainLayout.astro';
     <div class="grid-soft" aria-hidden="true"></div>
 
     <div class="container chapitre__container">
-      <span class="kicker reveal-fade">— Notre histoire</span>
+      <span class="kicker reveal-fade">— <span data-i18n="about.eyebrow">{a.eyebrow}</span></span>
 
       <h1 class="manifeste-titre">
-        <span class="manifeste-titre__line titre-words" data-words="Le partenaire tech"></span>
-        <span class="manifeste-titre__line manifeste-titre__line--shimmer titre-words" data-words="qui s'engage à vos côtés."></span>
+        <span class="manifeste-titre__line titre-words" data-words={a.heroLine1} data-i18n-words="about.heroLine1"></span>
+        <span class="manifeste-titre__line manifeste-titre__line--shimmer titre-words" data-words={a.heroLine2} data-i18n-words="about.heroLine2"></span>
       </h1>
 
       <div class="manifeste-trace reveal-fade" aria-hidden="true">
@@ -27,11 +30,11 @@ import MainLayout from '../layouts/MainLayout.astro';
         </svg>
       </div>
 
-      <p class="manifeste-intro titre-words" data-words="Une exigence simple. Livrer ce qui crée de la valeur."></p>
+      <p class="manifeste-intro titre-words" data-words={a.heroIntro} data-i18n-words="about.heroIntro"></p>
     </div>
 
     <div class="chapitre__scroll" aria-hidden="true">
-      <span class="chapitre__scroll-label">défiler</span>
+      <span class="chapitre__scroll-label" data-i18n="about.scroll">défiler</span>
       <span class="chapitre__scroll-line"></span>
     </div>
   </section>
@@ -45,51 +48,23 @@ import MainLayout from '../layouts/MainLayout.astro';
 
     <div class="container">
       <div class="engagements-intro">
-        <span class="kicker kicker--center reveal-fade">— Nos engagements</span>
-        <h2 class="acte__titre titre-words" data-words="Quatre promesses,"></h2>
-        <h2 class="acte__titre acte__titre--shimmer titre-words" data-words="tenues sur chaque projet."></h2>
+        <span class="kicker kicker--center reveal-fade" data-i18n="about.engagementsKicker">{a.engagementsKicker}</span>
+        <h2 class="acte__titre titre-words" data-words={a.engagementsLine1} data-i18n-words="about.engagementsLine1"></h2>
+        <h2 class="acte__titre acte__titre--shimmer titre-words" data-words={a.engagementsLine2} data-i18n-words="about.engagementsLine2"></h2>
       </div>
 
       <div class="engagements-grille">
-        <article class="engagement-carte reveal-pilier" style="--delay: 0ms;">
-          <div class="engagement-carte__num">01</div>
-          <div class="engagement-carte__icone-wrap" aria-hidden="true">
-            <div class="engagement-carte__icone-halo"></div>
-            <img src="/assets/quality/confiance.gif" alt="" class="engagement-carte__icone-img" />
-          </div>
-          <h3 class="engagement-carte__titre">Engagement</h3>
-          <p class="engagement-carte__texte">Livraison dans les délais. Pas de mises en demeure. Pas d'excuses.</p>
-        </article>
-
-        <article class="engagement-carte reveal-pilier" style="--delay: 90ms;">
-          <div class="engagement-carte__num">02</div>
-          <div class="engagement-carte__icone-wrap" aria-hidden="true">
-            <div class="engagement-carte__icone-halo"></div>
-            <img src="/assets/quality/excellence.png" alt="" class="engagement-carte__icone-img" />
-          </div>
-          <h3 class="engagement-carte__titre">Excellence</h3>
-          <p class="engagement-carte__texte">Code propre, documenté, testé. Conçu pour durer et évoluer.</p>
-        </article>
-
-        <article class="engagement-carte reveal-pilier" style="--delay: 180ms;">
-          <div class="engagement-carte__num">03</div>
-          <div class="engagement-carte__icone-wrap" aria-hidden="true">
-            <div class="engagement-carte__icone-halo"></div>
-            <img src="/assets/quality/vision-claire.png" alt="" class="engagement-carte__icone-img" />
-          </div>
-          <h3 class="engagement-carte__titre">Vision stratégique</h3>
-          <p class="engagement-carte__texte">Chaque livrable sert un objectif business. Jamais l'inverse.</p>
-        </article>
-
-        <article class="engagement-carte reveal-pilier" style="--delay: 270ms;">
-          <div class="engagement-carte__num">04</div>
-          <div class="engagement-carte__icone-wrap" aria-hidden="true">
-            <div class="engagement-carte__icone-halo"></div>
-            <img src="/assets/quality/flexibility.png" alt="" class="engagement-carte__icone-img" />
-          </div>
-          <h3 class="engagement-carte__titre">Flexibilité</h3>
-          <p class="engagement-carte__texte">Aucun engagement de longue durée imposé. Vous restez libre.</p>
-        </article>
+        {a.engagements.map((eng, i) => (
+          <article class="engagement-carte reveal-pilier" style={`--delay: ${i * 90}ms;`}>
+            <div class="engagement-carte__num">{String(i + 1).padStart(2, '0')}</div>
+            <div class="engagement-carte__icone-wrap" aria-hidden="true">
+              <div class="engagement-carte__icone-halo"></div>
+              <img src={['/assets/quality/confiance.gif','/assets/quality/excellence.png','/assets/quality/vision-claire.png','/assets/quality/flexibility.png'][i]} alt="" class="engagement-carte__icone-img" />
+            </div>
+            <h3 class="engagement-carte__titre" data-i18n={`about.engagements.${i}.title`}>{eng.title}</h3>
+            <p class="engagement-carte__texte" data-i18n={`about.engagements.${i}.desc`}>{eng.desc}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -106,9 +81,9 @@ import MainLayout from '../layouts/MainLayout.astro';
 
     <div class="container">
       <div class="piliers-intro">
-        <span class="kicker kicker--center reveal-fade">— Trois piliers de confiance</span>
-        <h2 class="acte__titre titre-words" data-words="Notre rapport au travail"></h2>
-        <h2 class="acte__titre acte__titre--shimmer titre-words" data-words="se mesure en chiffres."></h2>
+        <span class="kicker kicker--center reveal-fade" data-i18n="about.piliersKicker">{a.piliersKicker}</span>
+        <h2 class="acte__titre titre-words" data-words={a.piliersLine1} data-i18n-words="about.piliersLine1"></h2>
+        <h2 class="acte__titre acte__titre--shimmer titre-words" data-words={a.piliersLine2} data-i18n-words="about.piliersLine2"></h2>
       </div>
 
       <div class="piliers-fil" aria-hidden="true">
@@ -125,15 +100,15 @@ import MainLayout from '../layouts/MainLayout.astro';
           <div class="pilier__num-wrap">
             <span class="pilier__num">I</span>
           </div>
-          <h3 class="pilier__nom">Liberté</h3>
-          <p class="pilier__texte">Vous n'êtes lié à personne. Aucun contrat de longue durée imposé.</p>
+          <h3 class="pilier__nom" data-i18n="about.piliers.0.title">{a.piliers[0].title}</h3>
+          <p class="pilier__texte" data-i18n="about.piliers.0.desc">{a.piliers[0].desc}</p>
 
           <div class="pilier__kpi">
             <div class="pilier__kpi-val-wrap">
               <span class="pilier__kpi-val">0</span>
               <span class="pilier__kpi-decor" aria-hidden="true"></span>
             </div>
-            <span class="pilier__kpi-label">Engagement<br/>longue durée imposé</span>
+            <span class="pilier__kpi-label kpi-label--multi" data-i18n="about.piliers.0.kpiLabel">{a.piliers[0].kpiLabel}</span>
           </div>
         </article>
 
@@ -142,15 +117,15 @@ import MainLayout from '../layouts/MainLayout.astro';
           <div class="pilier__num-wrap">
             <span class="pilier__num">II</span>
           </div>
-          <h3 class="pilier__nom">Transparence</h3>
-          <p class="pilier__texte">Réponse rapide, point d'avancement régulier, aucune zone d'ombre.</p>
+          <h3 class="pilier__nom" data-i18n="about.piliers.1.title">{a.piliers[1].title}</h3>
+          <p class="pilier__texte" data-i18n="about.piliers.1.desc">{a.piliers[1].desc}</p>
 
           <div class="pilier__kpi">
             <div class="pilier__kpi-val-wrap">
               <span class="pilier__kpi-val pilier__kpi-val--small">&lt; 48<span class="pilier__kpi-unit">h</span></span>
               <span class="pilier__kpi-decor" aria-hidden="true"></span>
             </div>
-            <span class="pilier__kpi-label">Délai<br/>de réponse garanti</span>
+            <span class="pilier__kpi-label kpi-label--multi" data-i18n="about.piliers.1.kpiLabel">{a.piliers[1].kpiLabel}</span>
           </div>
         </article>
 
@@ -159,15 +134,15 @@ import MainLayout from '../layouts/MainLayout.astro';
           <div class="pilier__num-wrap">
             <span class="pilier__num">III</span>
           </div>
-          <h3 class="pilier__nom">Résultat</h3>
-          <p class="pilier__texte">Livré dans les délais, mesuré, validé par le client. Toujours.</p>
+          <h3 class="pilier__nom" data-i18n="about.piliers.2.title">{a.piliers[2].title}</h3>
+          <p class="pilier__texte" data-i18n="about.piliers.2.desc">{a.piliers[2].desc}</p>
 
           <div class="pilier__kpi">
             <div class="pilier__kpi-val-wrap">
               <span class="pilier__kpi-val">100<span class="pilier__kpi-unit">%</span></span>
               <span class="pilier__kpi-decor" aria-hidden="true"></span>
             </div>
-            <span class="pilier__kpi-label">Projets livrés<br/>dans les délais</span>
+            <span class="pilier__kpi-label kpi-label--multi" data-i18n="about.piliers.2.kpiLabel">{a.piliers[2].kpiLabel}</span>
           </div>
         </article>
 
@@ -178,7 +153,7 @@ import MainLayout from '../layouts/MainLayout.astro';
         <div class="satisfaction__halo" aria-hidden="true"></div>
 
         <div class="satisfaction__contenu">
-          <span class="satisfaction__eyebrow">— Et nos clients ?</span>
+          <span class="satisfaction__eyebrow" data-i18n="about.satisfaction.eyebrow">{a.satisfaction.eyebrow}</span>
 
           <div class="satisfaction__main">
             <div class="satisfaction__note">
@@ -197,66 +172,27 @@ import MainLayout from '../layouts/MainLayout.astro';
             </div>
           </div>
 
-          <p class="satisfaction__label">Satisfaction client moyenne — basée sur les retours de nos clients</p>
+          <p class="satisfaction__label" data-i18n="about.satisfaction.label">{a.satisfaction.label}</p>
 
           {/* Avis clients intégrés dans le bandeau */}
           <div class="avis-grille">
-            <article class="avis-carte reveal-pilier" style="--delay: 0ms;">
-              <div class="avis-carte__top">
-                <div class="avis-carte__avatar" aria-hidden="true">
-                  <span>S</span>
+            {a.satisfaction.testimonials.map((tm, i) => (
+              <article class="avis-carte reveal-pilier" style={`--delay: ${i * 120}ms;`}>
+                <div class="avis-carte__top">
+                  <div class={`avis-carte__avatar${i > 0 ? ` avis-carte__avatar--${i + 1}` : ''}`} aria-hidden="true">
+                    <span>{tm.name.charAt(0)}</span>
+                  </div>
+                  <div class="avis-carte__stars" aria-hidden="true">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  </div>
                 </div>
-                <div class="avis-carte__stars" aria-hidden="true">
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                <p class="avis-carte__texte" data-i18n={`about.satisfaction.testimonials.${i}.text`}>{tm.text}</p>
+                <div class="avis-carte__meta">
+                  <span class="avis-carte__nom" data-i18n={`about.satisfaction.testimonials.${i}.name`}>{tm.name}</span>
+                  <span class="avis-carte__role" data-i18n={`about.satisfaction.testimonials.${i}.role`}>{tm.role}</span>
                 </div>
-              </div>
-              <p class="avis-carte__texte">
-                Travail d'orfèvre. Le dashboard livré nous a fait gagner deux jours
-                par semaine sur le reporting commercial. Très réactif.
-              </p>
-              <div class="avis-carte__meta">
-                <span class="avis-carte__nom">Sophie L.</span>
-                <span class="avis-carte__role">Directrice commerciale</span>
-              </div>
-            </article>
-
-            <article class="avis-carte reveal-pilier" style="--delay: 120ms;">
-              <div class="avis-carte__top">
-                <div class="avis-carte__avatar avis-carte__avatar--2" aria-hidden="true">
-                  <span>M</span>
-                </div>
-                <div class="avis-carte__stars" aria-hidden="true">
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-              </div>
-              <p class="avis-carte__texte">
-                Site livré en avance, code clair, SEO impeccable. Un partenaire
-                qui tient ses délais et explique tout — rare.
-              </p>
-              <div class="avis-carte__meta">
-                <span class="avis-carte__nom">Marc D.</span>
-                <span class="avis-carte__role">Co-fondateur, startup SaaS</span>
-              </div>
-            </article>
-
-            <article class="avis-carte reveal-pilier" style="--delay: 240ms;">
-              <div class="avis-carte__top">
-                <div class="avis-carte__avatar avis-carte__avatar--3" aria-hidden="true">
-                  <span>C</span>
-                </div>
-                <div class="avis-carte__stars" aria-hidden="true">
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-              </div>
-              <p class="avis-carte__texte">
-                L'agent IA déployé répond à 80% des demandes support. ROI
-                atteint en moins de trois mois. Pédagogie au top.
-              </p>
-              <div class="avis-carte__meta">
-                <span class="avis-carte__nom">Camille R.</span>
-                <span class="avis-carte__role">Responsable opérations</span>
-              </div>
-            </article>
+              </article>
+            ))}
           </div>
         </div>
       </div>
@@ -275,71 +211,25 @@ import MainLayout from '../layouts/MainLayout.astro';
 
     <div class="container">
       <div class="parcours-intro">
-        <span class="kicker kicker--center kicker--clair reveal-fade">— Notre parcours</span>
-        <h2 class="acte__titre acte__titre--clair titre-words" data-words="Une trajectoire bâtie"></h2>
-        <h2 class="acte__titre acte__titre--shimmer titre-words" data-words="par la rigueur."></h2>
+        <span class="kicker kicker--center kicker--clair reveal-fade" data-i18n="about.parcoursKicker">{a.parcoursKicker}</span>
+        <h2 class="acte__titre acte__titre--clair titre-words" data-words={a.parcoursLine1} data-i18n-words="about.parcoursLine1"></h2>
+        <h2 class="acte__titre acte__titre--shimmer titre-words" data-words={a.parcoursLine2} data-i18n-words="about.parcoursLine2"></h2>
       </div>
 
       <ol class="parcours-timeline">
-        <li class="parcours-step reveal-pilier" style="--delay: 0ms;">
-          <div class="parcours-step__bullet" aria-hidden="true">
-            <span class="parcours-step__ring"></span>
-            <span class="parcours-step__core"></span>
-          </div>
-          <div class="parcours-step__contenu">
-            <span class="parcours-step__year">2019</span>
-            <h3 class="parcours-step__titre">Premières missions</h3>
-            <p class="parcours-step__texte">Conseil en transformation digitale, automatisation de processus métier.</p>
-          </div>
-        </li>
-
-        <li class="parcours-step reveal-pilier" style="--delay: 120ms;">
-          <div class="parcours-step__bullet" aria-hidden="true">
-            <span class="parcours-step__ring"></span>
-            <span class="parcours-step__core"></span>
-          </div>
-          <div class="parcours-step__contenu">
-            <span class="parcours-step__year">2021</span>
-            <h3 class="parcours-step__titre">Spécialisation data</h3>
-            <p class="parcours-step__texte">Reporting, dashboards, analyses business pour PME et ETI.</p>
-          </div>
-        </li>
-
-        <li class="parcours-step reveal-pilier" style="--delay: 240ms;">
-          <div class="parcours-step__bullet" aria-hidden="true">
-            <span class="parcours-step__ring"></span>
-            <span class="parcours-step__core"></span>
-          </div>
-          <div class="parcours-step__contenu">
-            <span class="parcours-step__year">2023</span>
-            <h3 class="parcours-step__titre">Sites web premium</h3>
-            <p class="parcours-step__texte">Création de sites vitrines et plateformes sur-mesure, focus SEO.</p>
-          </div>
-        </li>
-
-        <li class="parcours-step reveal-pilier" style="--delay: 360ms;">
-          <div class="parcours-step__bullet" aria-hidden="true">
-            <span class="parcours-step__ring"></span>
-            <span class="parcours-step__core"></span>
-          </div>
-          <div class="parcours-step__contenu">
-            <span class="parcours-step__year">2024</span>
-            <h3 class="parcours-step__titre">Agents IA & automatisation</h3>
-            <p class="parcours-step__texte">Intégration de Claude, GPT, n8n. Automatisations de bout en bout.</p>
-          </div>
-        </li>
-
-        <li class="parcours-step reveal-pilier" style="--delay: 480ms;">
-          <div class="parcours-step__bullet" aria-hidden="true">
-            <span class="parcours-step__ring"></span>
-            <span class="parcours-step__core"></span>
-          </div>
-          <div class="parcours-step__contenu">
-            <span class="parcours-step__year">2026</span>
-            <h3 class="parcours-step__titre">Aujourd'hui</h3>
-            <p class="parcours-step__texte">Cabinet en pleine croissance. De nouveaux clients chaque trimestre.</p>
-          </div>
-        </li>
+        {a.parcours.map((p, i) => (
+          <li class="parcours-step reveal-pilier" style={`--delay: ${i * 120}ms;`}>
+            <div class="parcours-step__bullet" aria-hidden="true">
+              <span class="parcours-step__ring"></span>
+              <span class="parcours-step__core"></span>
+            </div>
+            <div class="parcours-step__contenu">
+              <span class="parcours-step__year" data-i18n={`about.parcours.${i}.year`}>{p.year}</span>
+              <h3 class="parcours-step__titre" data-i18n={`about.parcours.${i}.title`}>{p.title}</h3>
+              <p class="parcours-step__texte" data-i18n={`about.parcours.${i}.desc`}>{p.desc}</p>
+            </div>
+          </li>
+        ))}
       </ol>
     </div>
   </section>
@@ -352,12 +242,12 @@ import MainLayout from '../layouts/MainLayout.astro';
 
     <div class="container cta-final__inner">
       <h2 class="cta-final__titre">
-        <span class="titre-words" data-words="Construisons ensemble"></span><br/>
-        <span class="cta-final__shimmer titre-words" data-words="ce qui crée de la valeur."></span>
+        <span class="titre-words" data-words={a.ctaLine1} data-i18n-words="about.ctaLine1"></span><br/>
+        <span class="cta-final__shimmer titre-words" data-words={a.ctaLine2} data-i18n-words="about.ctaLine2"></span>
       </h2>
       <div class="cta-final__actions reveal-fade">
-        <a href="/devis" class="btn btn--primaire">Démarrer un projet</a>
-        <a href="/contact" class="btn btn--outline">Nous contacter</a>
+        <a href="/devis" class="btn btn--primaire" data-i18n="about.ctaPrimaryBtn">{a.ctaPrimaryBtn}</a>
+        <a href="/contact" class="btn btn--outline" data-i18n="about.ctaSecondaryBtn">{a.ctaSecondaryBtn}</a>
       </div>
     </div>
   </section>
@@ -1005,6 +895,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     line-height: 1.4;
     text-align: center;
   }
+  .kpi-label--multi { white-space: pre-line; }
 
   /* ═══════════════════════════════════════════
      SATISFACTION CLIENT — bandeau hero
@@ -1564,6 +1455,25 @@ import MainLayout from '../layouts/MainLayout.astro';
         );
       });
       (line as HTMLElement).dataset.revealed = '1';
+    });
+  });
+
+  // Relancer la cascade word-reveal après changement de langue
+  document.addEventListener('i18n:applied', () => {
+    const allTitres = document.querySelectorAll<HTMLElement>('.titre-words, .word-line');
+    allTitres.forEach((el) => {
+      el.removeAttribute('data-revealed');
+      splitIntoWords(el);
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inView) {
+        el.dataset.revealed = '1';
+        el.querySelectorAll<HTMLElement>('.word').forEach((w, i) => {
+          setTimeout(() => w.classList.add('is-revealed'), i * 70);
+        });
+      } else {
+        titresObs.observe(el);
+      }
     });
   });
 </script>

@@ -46,8 +46,8 @@ const outils = [
     <div class="marquee-section">
       <!-- Label word-reveal, au-dessus du séparateur -->
       <div class="marquee-label" aria-label="EN UTILISANT LES MEILLEURS OUTILS DU MARCHÉ">
-        {['EN', 'UTILISANT', 'LES', 'MEILLEURS', 'OUTILS', 'DU', 'MARCHÉ'].map((word, wi) => (
-          <span class="marquee-word" style={`animation-delay:${0.15 + wi * 0.1}s`}>{word}</span>
+        {t.marquee.words.map((word, wi) => (
+          <span class="marquee-word" style={`animation-delay:${0.15 + wi * 0.1}s`} data-i18n={`marquee.words.${wi}`}>{word}</span>
         ))}
       </div>
       <!-- Séparateur -->
@@ -129,8 +129,8 @@ const outils = [
       <div class="section-head reveal">
         <span class="eyebrow" data-i18n="process.eyebrow">{t.process.eyebrow}</span>
         <h2 class="titre-section process-title-reveal" aria-label="Simple. Transparent. Efficace.">
-          {['Simple.', 'Transparent.', 'Efficace.'].map((w, wi) => (
-            <span class="proc-word" data-delay={wi * 0.18}>{w}</span>
+          {t.process.titleWords.map((w, wi) => (
+            <span class="proc-word" data-delay={wi * 0.18} data-i18n={`process.titleWords.${wi}`}>{w}</span>
           ))}
         </h2>
       </div>

@@ -1,5 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import { translations } from '../i18n/translations';
+const t = translations.fr;
 ---
 
 <MainLayout title="Contact — Nal Consulting">
@@ -16,13 +18,13 @@ import MainLayout from '../layouts/MainLayout.astro';
 
       {/* En-tête avec word-reveal */}
       <div class="contact-top">
-        <span class="eyebrow eyebrow--blanc reveal-fade">— Contact</span>
+        <span class="eyebrow eyebrow--blanc reveal-fade" data-i18n="contact.eyebrow">— Contact</span>
         <h1 class="contact-titre">
-          <span class="contact-titre__line titre-words" data-words="Parlons de"></span>
-          <span class="contact-titre__line contact-titre__line--grad titre-words" data-words="votre projet."></span>
+          <span class="contact-titre__line titre-words" data-words={t.contact.heroLine1} data-i18n-words="contact.heroLine1"></span>
+          <span class="contact-titre__line contact-titre__line--grad titre-words" data-words={t.contact.heroLine2} data-i18n-words="contact.heroLine2"></span>
         </h1>
-        <p class="contact-desc reveal-fade">
-          Réponse garantie sous 24h. Aucun engagement.
+        <p class="contact-desc reveal-fade" data-i18n="contact.heroSub">
+          {t.contact.heroSub}
         </p>
       </div>
 
@@ -33,10 +35,10 @@ import MainLayout from '../layouts/MainLayout.astro';
           <div class="cp-card__halo" aria-hidden="true"></div>
 
           <div class="cp-card__head">
-            <span class="cp-card__eyebrow">— Coordonnées directes</span>
+            <span class="cp-card__eyebrow" data-i18n="contact.cardEyebrow">{t.contact.cardEyebrow}</span>
             <h2 class="cp-card__titre">
-              <span class="titre-words" data-words="Joignez-nous"></span><br/>
-              <span class="cp-card__titre-grad titre-words" data-words="directement."></span>
+              <span class="titre-words" data-words={t.contact.cardLine1} data-i18n-words="contact.cardLine1"></span><br/>
+              <span class="cp-card__titre-grad titre-words" data-words={t.contact.cardLine2} data-i18n-words="contact.cardLine2"></span>
             </h2>
           </div>
 
@@ -49,7 +51,7 @@ import MainLayout from '../layouts/MainLayout.astro';
                 </svg>
               </div>
               <div class="cp-item__txt">
-                <span class="cp-item__label">Email</span>
+                <span class="cp-item__label" data-i18n="contact.itemEmailLabel">Email</span>
                 <span class="cp-item__val">naelmunier22@gmail.com</span>
               </div>
               <svg class="cp-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -65,7 +67,7 @@ import MainLayout from '../layouts/MainLayout.astro';
                 </svg>
               </div>
               <div class="cp-item__txt">
-                <span class="cp-item__label">Téléphone</span>
+                <span class="cp-item__label" data-i18n="contact.itemPhoneLabel">Téléphone</span>
                 <span class="cp-item__val">06 21 86 28 54</span>
               </div>
               <svg class="cp-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -82,8 +84,8 @@ import MainLayout from '../layouts/MainLayout.astro';
                 </svg>
               </div>
               <div class="cp-item__txt">
-                <span class="cp-item__label">Disponibilité</span>
-                <span class="cp-item__val">Lun–Ven · 9h–19h</span>
+                <span class="cp-item__label" data-i18n="contact.itemAvailLabel">Disponibilité</span>
+                <span class="cp-item__val" data-i18n="contact.itemAvailVal">{t.contact.itemAvailVal}</span>
               </div>
             </div>
           </div>
@@ -105,10 +107,10 @@ import MainLayout from '../layouts/MainLayout.astro';
         {/* Formulaire */}
         <div class="cp-form-wrap reveal-fade">
           <div class="cp-form-head">
-            <span class="cp-card__eyebrow">— Ou via le formulaire</span>
+            <span class="cp-card__eyebrow" data-i18n="contact.formEyebrow">{t.contact.formEyebrow}</span>
             <h2 class="cp-card__titre">
-              <span class="titre-words" data-words="Envoyez-moi"></span><br/>
-              <span class="cp-card__titre-grad titre-words" data-words="un message."></span>
+              <span class="titre-words" data-words={t.contact.formLine1} data-i18n-words="contact.formLine1"></span><br/>
+              <span class="cp-card__titre-grad titre-words" data-words={t.contact.formLine2} data-i18n-words="contact.formLine2"></span>
             </h2>
           </div>
 
@@ -120,23 +122,23 @@ import MainLayout from '../layouts/MainLayout.astro';
           >
             <div class="cp-form__row">
               <div class="form-group">
-                <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" placeholder="Votre nom" required />
+                <label for="nom" data-i18n="contact.formNomLabel">Nom</label>
+                <input type="text" id="nom" name="nom" placeholder={t.contact.formNomPh} data-i18n-placeholder="contact.formNomPh" required />
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+                <label for="email" data-i18n="contact.formEmailLabel">Email</label>
+                <input type="email" id="email" name="email" placeholder={t.contact.formEmailPh} data-i18n-placeholder="contact.formEmailPh" required />
               </div>
             </div>
             <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows={6} placeholder="Décrivez votre projet ou votre question..." required></textarea>
+              <label for="message" data-i18n="contact.formMessageLabel">Message</label>
+              <textarea id="message" name="message" rows={6} placeholder={t.contact.formMessagePh} data-i18n-placeholder="contact.formMessagePh" required></textarea>
             </div>
             <button type="submit" class="btn btn--primaire cp-submit" id="contactSubmit">
-              <span>Envoyer le message</span>
+              <span data-i18n="contact.formSubmit">{t.contact.formSubmit}</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </button>
-            <p class="cp-note">Vos données restent strictement confidentielles.</p>
+            <p class="cp-note" data-i18n="contact.formNote">{t.contact.formNote}</p>
           </form>
         </div>
 
@@ -222,6 +224,25 @@ import MainLayout from '../layouts/MainLayout.astro';
     { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
   );
   fadeEls.forEach((el) => fadeObs.observe(el));
+
+  // Relancer la cascade word-reveal après changement de langue
+  document.addEventListener('i18n:applied', () => {
+    const allTitres = document.querySelectorAll<HTMLElement>('.titre-words');
+    allTitres.forEach((el) => {
+      el.removeAttribute('data-revealed');
+      splitIntoWords(el);
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inView) {
+        el.dataset.revealed = '1';
+        el.querySelectorAll<HTMLElement>('.word').forEach((w, i) => {
+          setTimeout(() => w.classList.add('is-revealed'), i * 70);
+        });
+      } else {
+        titresObs.observe(el);
+      }
+    });
+  });
 </script>
 
 <style>
