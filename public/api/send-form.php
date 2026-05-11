@@ -2,11 +2,11 @@
 /**
  * Endpoint Brevo — réception des formulaires (contact + devis web/data/ia)
  *
- * Lit la clé API depuis la variable d'environnement Hostinger : API_BREVO
+ * Lit la clé API depuis la variable d'environnement Hostinger : BREVO_API_KEY
  * Envoie l'email à : muniernael@gmail.com
  *
  * Variables d'env requises côté Hostinger (hPanel → Sites → Variables d'environnement) :
- *   - API_BREVO            : clé API Brevo (obligatoire)
+ *   - BREVO_API_KEY        : clé API Brevo (obligatoire)
  *   - BREVO_SENDER_EMAIL   : email expéditeur validé sur Brevo (optionnel, défaut : contact@nalconsulting.fr)
  *   - BREVO_TO_EMAIL       : destinataire (optionnel, défaut : muniernael@gmail.com)
  */
@@ -27,7 +27,7 @@ if (!empty($_POST['_gotcha'] ?? '')) {
 }
 
 // ─── Lecture de la config
-$apiKey      = getenv('API_BREVO') ?: ($_ENV['API_BREVO'] ?? '');
+$apiKey      = getenv('BREVO_API_KEY') ?: ($_ENV['BREVO_API_KEY'] ?? '');
 $senderEmail = getenv('BREVO_SENDER_EMAIL') ?: ($_ENV['BREVO_SENDER_EMAIL'] ?? 'contact@nalconsulting.fr');
 $senderName  = 'Nal Consulting — Site';
 $toEmail     = getenv('BREVO_TO_EMAIL') ?: ($_ENV['BREVO_TO_EMAIL'] ?? 'muniernael@gmail.com');
@@ -36,7 +36,7 @@ $toName      = 'Nael Munier';
 if (empty($apiKey)) {
     http_response_code(500);
     header('Content-Type: application/json');
-    echo json_encode(['ok' => false, 'error' => 'Configuration manquante : API_BREVO']);
+    echo json_encode(['ok' => false, 'error' => 'Configuration manquante : BREVO_API_KEY']);
     exit;
 }
 
