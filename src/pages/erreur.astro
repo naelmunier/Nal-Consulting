@@ -1,0 +1,59 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Erreur — Nal Consulting">
+  <section class="error-page">
+    <div class="error-page__bg" aria-hidden="true">
+      <div class="error-blob"></div>
+    </div>
+    <div class="container error-inner">
+      <span class="eyebrow eyebrow--blanc">— Oups</span>
+      <h1 class="error-titre">
+        Une erreur est survenue<br/>
+        <span class="error-titre__grad">lors de l'envoi.</span>
+      </h1>
+      <p class="error-desc">
+        Pas de panique. Vous pouvez réessayer ou m'écrire directement à
+        <a href="mailto:muniernael@gmail.com" class="error-mail">muniernael@gmail.com</a>.
+      </p>
+      <div class="error-actions">
+        <a href="/contact" class="btn btn--primaire"><span>Retour au formulaire</span></a>
+        <a href="https://calendly.com/muniernael/30min" target="_blank" rel="noopener noreferrer" class="btn btn--ghost"><span>Réserver 30 min</span></a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+.error-page {
+  position: relative; min-height: 80vh;
+  padding: 8rem 0 6rem;
+  background: linear-gradient(135deg, #070d1a 0%, #0d1830 60%, #1a2e50 100%);
+  color: #fff;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.error-page__bg { position: absolute; inset: 0; pointer-events: none; }
+.error-blob { position: absolute; width: 500px; height: 500px; top: -200px; right: -150px;
+  background: radial-gradient(circle, rgba(160,180,222,.4) 0%, transparent 70%);
+  filter: blur(80px); }
+.error-inner { position: relative; z-index: 1; text-align: center; max-width: 680px; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+.error-titre { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -.035em; line-height: 1.1; margin: 0; }
+.error-titre__grad {
+  background: linear-gradient(120deg, #A0B4DE 0%, #d6e6ff 50%, #A0B4DE 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.error-desc { font-size: 1.05rem; line-height: 1.65; color: rgba(255,255,255,.78); }
+.error-mail { color: #A0B4DE; text-decoration: underline; text-underline-offset: 3px; }
+.error-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
+.btn--ghost {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: 1rem 1.6rem; background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.18); color: #fff;
+  border-radius: 999px; text-decoration: none; font-weight: 600;
+  transition: background .3s ease, transform .3s ease;
+}
+.btn--ghost:hover { background: rgba(255,255,255,.12); transform: translateY(-2px); }
+</style>

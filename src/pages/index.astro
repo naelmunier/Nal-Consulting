@@ -577,9 +577,10 @@ const outils = [
   font-weight: 900;
   letter-spacing:-.04em; line-height:1.08;
   margin-bottom:.6rem;
-  word-break: break-word;
-  hyphens: auto;
+  overflow-wrap: break-word;
+  text-wrap: balance;
   padding: 0 .5rem;
+  max-width: 100%;
   background: linear-gradient(
     100deg,
     #ffffff 0%,
@@ -1356,10 +1357,21 @@ const outils = [
 @media (max-width:600px) {
   .kpi-grid { grid-template-columns:1fr 1fr; }
   .marquee-section { padding:1rem 0; }
-  .hero__titre { font-size: clamp(1.6rem, 8vw, 2.4rem); letter-spacing:-.03em; }
-  .hero__inner { padding: 0 1rem; }
+  .hero__inner { padding-left: 1.25rem; padding-right: 1.25rem; max-width: 100%; }
+  .hero__titre {
+    font-size: clamp(1.5rem, 7.5vw, 2.2rem);
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    padding: 0;
+    word-spacing: -.05em;
+  }
+  .hero__titre br { display: none; }
 }
-@media (max-width:380px) {
-  .hero__titre { font-size: 1.5rem; }
+@media (max-width:400px) {
+  .hero__inner { padding-left: 1rem; padding-right: 1rem; }
+  .hero__titre { font-size: 1.55rem; letter-spacing: -.015em; }
+}
+@media (max-width:340px) {
+  .hero__titre { font-size: 1.35rem; }
 }
 </style>

@@ -28,6 +28,78 @@ const t = translations.fr;
         </p>
       </div>
 
+      {/* ═══ SECTION CALENDLY — Voie rapide ═══ */}
+      <div class="calendly-hero reveal-fade">
+        <div class="calendly-hero__bg" aria-hidden="true">
+          <div class="calendly-hero__glow"></div>
+          <div class="calendly-hero__grid"></div>
+        </div>
+        <div class="calendly-hero__content">
+          <div class="calendly-hero__left">
+            <span class="calendly-hero__badge">
+              <span class="calendly-hero__badge-pulse"></span>
+              <span data-i18n="contact.calendly.badge">Le plus rapide</span>
+            </span>
+            <h2 class="calendly-hero__titre">
+              <span data-i18n="contact.calendly.line1">Réservez 30 minutes</span><br/>
+              <span class="calendly-hero__titre-grad" data-i18n="contact.calendly.line2">en direct avec moi.</span>
+            </h2>
+            <p class="calendly-hero__desc" data-i18n="contact.calendly.desc">
+              Un échange visio sans engagement pour comprendre votre besoin et identifier les bons leviers. Choisissez votre créneau, je m'occupe du reste.
+            </p>
+            <div class="calendly-hero__features">
+              <span class="calendly-hero__feat">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="contact.calendly.feat1">30 minutes</span>
+              </span>
+              <span class="calendly-hero__feat">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="contact.calendly.feat2">Visio Google Meet</span>
+              </span>
+              <span class="calendly-hero__feat">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="contact.calendly.feat3">Sans engagement</span>
+              </span>
+            </div>
+            <a href="https://calendly.com/muniernael/30min" target="_blank" rel="noopener noreferrer" class="calendly-hero__cta">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <span data-i18n="contact.calendly.cta">Réserver mon créneau</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+          <div class="calendly-hero__right" aria-hidden="true">
+            <div class="calendly-hero__visual">
+              <div class="calendly-hero__visual-cal">
+                <div class="calendly-hero__visual-head">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="calendly-hero__visual-grid">
+                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                  <div></div><div></div><div class="active"></div><div></div><div></div><div></div><div></div>
+                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                </div>
+                <div class="calendly-hero__visual-time">10:30 — 11:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-divider" aria-hidden="true">
+        <span class="contact-divider__line"></span>
+        <span class="contact-divider__text" data-i18n="contact.divider">ou par message</span>
+        <span class="contact-divider__line"></span>
+      </div>
+
       <div class="contact-grid">
 
         {/* Carte coordonnées premium */}
@@ -88,25 +160,6 @@ const t = translations.fr;
                 <span class="cp-item__val" data-i18n="contact.itemAvailVal">{t.contact.itemAvailVal}</span>
               </div>
             </div>
-
-            <a href="https://calendly.com/muniernael/30min" target="_blank" rel="noopener noreferrer" class="cp-item cp-item--link cp-item--calendly" aria-label="Réserver un créneau Calendly">
-              <div class="cp-item__ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2"/>
-                  <line x1="16" y1="2" x2="16" y2="6"/>
-                  <line x1="8" y1="2" x2="8" y2="6"/>
-                  <line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-              </div>
-              <div class="cp-item__txt">
-                <span class="cp-item__label">Calendly</span>
-                <span class="cp-item__val">Réserver 30 min</span>
-              </div>
-              <svg class="cp-item__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </a>
           </div>
 
           <div class="cp-card__separator" aria-hidden="true"></div>
@@ -135,10 +188,11 @@ const t = translations.fr;
 
           <form
             class="cp-form"
-            action="https://formspree.io/f/XXXXXXXX"
+            action="/api/send-form.php"
             method="POST"
             id="contactForm"
           >
+            <input type="hidden" name="service" value="contact" />
             <div class="cp-form__row">
               <div class="form-group">
                 <label for="nom" data-i18n="contact.formNomLabel">Nom</label>
@@ -632,5 +686,256 @@ const t = translations.fr;
   .cp-form-wrap { padding: 1.8rem 1.4rem; }
   .cp-form__row { grid-template-columns: 1fr; }
   .cp-socials { flex-direction: column; }
+}
+
+/* ═══════════════════════════════════════════
+   CALENDLY HERO — Section voie rapide
+   ═══════════════════════════════════════════ */
+.calendly-hero {
+  position: relative;
+  margin: 0 0 4rem;
+  border-radius: var(--rayon-xl, 3rem);
+  overflow: hidden;
+  background: linear-gradient(135deg, #0d1830 0%, #1a2e50 60%, #243d6b 100%);
+  border: 1px solid rgba(160,180,222,.22);
+  box-shadow:
+    0 30px 90px -20px rgba(7,13,26,.6),
+    0 0 0 1px rgba(255,255,255,.04) inset,
+    0 0 60px -20px rgba(107,145,212,.35) inset;
+}
+.calendly-hero__bg {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+}
+.calendly-hero__glow {
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 140%;
+  background: radial-gradient(circle, rgba(160,180,222,.35) 0%, rgba(107,145,212,.15) 35%, transparent 70%);
+  filter: blur(40px);
+  animation: calendly-glow 8s ease-in-out infinite;
+}
+@keyframes calendly-glow {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: .7; }
+  50%      { transform: translate(-30px, 20px) scale(1.1); opacity: 1; }
+}
+.calendly-hero__grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(160,180,222,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(160,180,222,.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 70% 50%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 70% 50%, black 0%, transparent 70%);
+}
+.calendly-hero__content {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  padding: 3.5rem 3.5rem;
+}
+.calendly-hero__left {
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+.calendly-hero__badge {
+  display: inline-flex; align-items: center; gap: .55rem;
+  align-self: flex-start;
+  padding: .45rem .9rem;
+  background: rgba(160,180,222,.12);
+  border: 1px solid rgba(160,180,222,.3);
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #d6e6ff;
+}
+.calendly-hero__badge-pulse {
+  width: 8px; height: 8px;
+  background: #6BE2A8;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(107,226,168,.7);
+  animation: calendly-pulse 1.8s ease-out infinite;
+}
+@keyframes calendly-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(107,226,168,.7); }
+  70%  { box-shadow: 0 0 0 10px rgba(107,226,168,0); }
+  100% { box-shadow: 0 0 0 0 rgba(107,226,168,0); }
+}
+.calendly-hero__titre {
+  font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+  color: #fff;
+  margin: 0;
+}
+.calendly-hero__titre-grad {
+  background: linear-gradient(120deg, #A0B4DE 0%, #d6e6ff 50%, #A0B4DE 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.calendly-hero__desc {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.78);
+  margin: 0;
+  max-width: 480px;
+}
+.calendly-hero__features {
+  display: flex; flex-wrap: wrap; gap: .8rem 1.4rem;
+  margin-top: .2rem;
+}
+.calendly-hero__feat {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .9rem; color: rgba(255,255,255,.85); font-weight: 500;
+}
+.calendly-hero__feat svg { color: #6BE2A8; flex-shrink: 0; }
+.calendly-hero__cta {
+  display: inline-flex; align-items: center; gap: .7rem;
+  align-self: flex-start;
+  padding: 1.05rem 1.8rem;
+  margin-top: .8rem;
+  background: linear-gradient(135deg, #A0B4DE 0%, #6B91D4 50%, #4a70c0 100%);
+  color: #0d1830;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -.01em;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow:
+    0 10px 30px -8px rgba(160,180,222,.5),
+    0 0 0 1px rgba(255,255,255,.2) inset;
+  transition: transform .35s cubic-bezier(.22,.9,.3,1), box-shadow .35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.calendly-hero__cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform .8s ease;
+}
+.calendly-hero__cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 16px 40px -8px rgba(160,180,222,.6),
+    0 0 0 1px rgba(255,255,255,.3) inset;
+}
+.calendly-hero__cta:hover::before { transform: translateX(100%); }
+.calendly-hero__cta svg:last-child { transition: transform .35s ease; }
+.calendly-hero__cta:hover svg:last-child { transform: translateX(4px); }
+
+/* Visuel mock-calendrier à droite */
+.calendly-hero__right {
+  display: flex; align-items: center; justify-content: center;
+}
+.calendly-hero__visual {
+  position: relative;
+  width: 100%; max-width: 320px;
+  aspect-ratio: 1 / 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.calendly-hero__visual::before {
+  content: '';
+  position: absolute; inset: -20px;
+  background: radial-gradient(circle, rgba(160,180,222,.3) 0%, transparent 60%);
+  filter: blur(30px);
+  z-index: 0;
+}
+.calendly-hero__visual-cal {
+  position: relative; z-index: 1;
+  width: 100%;
+  background: linear-gradient(160deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 1.4rem;
+  padding: 1.2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px -10px rgba(0,0,0,.4);
+  transform: rotate(-3deg);
+  transition: transform .5s cubic-bezier(.22,.9,.3,1);
+}
+.calendly-hero:hover .calendly-hero__visual-cal { transform: rotate(0deg) scale(1.03); }
+.calendly-hero__visual-head {
+  display: flex; gap: .35rem; margin-bottom: 1rem;
+}
+.calendly-hero__visual-head span {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,.25);
+}
+.calendly-hero__visual-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .35rem;
+  margin-bottom: 1rem;
+}
+.calendly-hero__visual-grid > div {
+  aspect-ratio: 1 / 1;
+  background: rgba(255,255,255,.06);
+  border-radius: 6px;
+  transition: background .3s ease;
+}
+.calendly-hero__visual-grid > div.active {
+  background: linear-gradient(135deg, #A0B4DE, #6B91D4);
+  box-shadow: 0 0 16px rgba(160,180,222,.6);
+  animation: cal-day-pulse 2s ease-in-out infinite;
+}
+@keyframes cal-day-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+.calendly-hero__visual-time {
+  text-align: center;
+  font-size: .82rem;
+  color: #d6e6ff;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .55rem;
+  background: rgba(160,180,222,.12);
+  border-radius: 8px;
+  border: 1px solid rgba(160,180,222,.2);
+}
+
+/* Diviseur "ou par message" */
+.contact-divider {
+  display: flex; align-items: center; gap: 1.2rem;
+  margin: 0 0 3rem;
+  max-width: 600px;
+  margin-left: auto; margin-right: auto;
+}
+.contact-divider__line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+}
+.contact-divider__text {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: rgba(255,255,255,.5);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .calendly-hero__content {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 2rem;
+    gap: 2rem;
+  }
+  .calendly-hero__right { order: -1; }
+  .calendly-hero__visual { max-width: 220px; }
+}
+@media (max-width: 600px) {
+  .calendly-hero { border-radius: 1.6rem; }
+  .calendly-hero__content { padding: 2rem 1.4rem; gap: 1.5rem; }
+  .calendly-hero__titre { font-size: clamp(1.5rem, 6.5vw, 2rem); }
+  .calendly-hero__desc { font-size: .95rem; }
+  .calendly-hero__cta { padding: .95rem 1.4rem; font-size: .95rem; }
+  .calendly-hero__features { gap: .5rem 1rem; }
+  .calendly-hero__feat { font-size: .85rem; }
+  .calendly-hero__visual { max-width: 180px; }
 }
 </style>
