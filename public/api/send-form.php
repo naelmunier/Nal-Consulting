@@ -7,7 +7,7 @@
  *
  * Variables d'env requises côté Hostinger (hPanel → Sites → Variables d'environnement) :
  *   - BREVO_API_KEY        : clé API Brevo (obligatoire)
- *   - BREVO_SENDER_EMAIL   : email expéditeur validé sur Brevo (optionnel, défaut : contact@nalconsulting.fr)
+ *   - BREVO_SENDER_EMAIL   : email expéditeur validé sur Brevo (optionnel, défaut : muniernael@gmail.com)
  *   - BREVO_TO_EMAIL       : destinataire (optionnel, défaut : muniernael@gmail.com)
  */
 
@@ -28,7 +28,7 @@ if (!empty($_POST['_gotcha'] ?? '')) {
 
 // ─── Lecture de la config
 $apiKey      = getenv('BREVO_API_KEY') ?: ($_ENV['BREVO_API_KEY'] ?? '');
-$senderEmail = getenv('BREVO_SENDER_EMAIL') ?: ($_ENV['BREVO_SENDER_EMAIL'] ?? 'contact@nalconsulting.fr');
+$senderEmail = getenv('BREVO_SENDER_EMAIL') ?: ($_ENV['BREVO_SENDER_EMAIL'] ?? 'muniernael@gmail.com');
 $senderName  = 'Nal Consulting — Site';
 $toEmail     = getenv('BREVO_TO_EMAIL') ?: ($_ENV['BREVO_TO_EMAIL'] ?? 'muniernael@gmail.com');
 $toName      = 'Nael Munier';
