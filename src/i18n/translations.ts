@@ -103,6 +103,18 @@ export const translations = {
       secondary: 'Nous contacter',
     },
 
+    /* Calendly band (page d'accueil) */
+    calendlyBand: {
+      badge:  'Le plus rapide',
+      line1:  'Parlons de votre projet',
+      line2:  'en 30 minutes.',
+      desc:   "Un échange visio sans engagement pour identifier les leviers concrets qui peuvent transformer votre activité. Choisissez votre créneau, je m'occupe du reste.",
+      feat1:  '30 minutes',
+      feat2:  'Visio Google Meet',
+      feat3:  'Sans engagement',
+      cta:    'Réserver mon créneau',
+    },
+
     /* Footer */
     footer: {
       desc:      'Votre partenaire en transformation digitale. Sites web, data & IA au service de votre croissance.',
@@ -586,6 +598,18 @@ export const translations = {
       desc:    "Describe your need in 2 minutes — I'll get back to you within 24h with a concrete proposal and an honest budget.",
       primary:   'Get my free quote',
       secondary: 'Contact us',
+    },
+
+    /* Calendly band (homepage) */
+    calendlyBand: {
+      badge:  'Fastest way',
+      line1:  "Let's talk about your project",
+      line2:  'in 30 minutes.',
+      desc:   'A no-commitment video call to identify concrete levers that can transform your business. Pick a slot, I handle the rest.',
+      feat1:  '30 minutes',
+      feat2:  'Google Meet video',
+      feat3:  'No commitment',
+      cta:    'Book my slot',
     },
     footer: {
       desc:     'Your digital transformation partner. Web, data & AI at the service of your growth.',
