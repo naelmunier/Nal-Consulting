@@ -672,12 +672,12 @@ const outils = [
 }
 
 .hero__gradient {
-  /* hérite du shimmer du parent .hero__titre */
-  background: inherit;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  /* Le parent .hero__titre clippe déjà le gradient sur tout le texte.
+     Pas de re-déclaration ici — sinon Safari mobile rend un bloc opaque
+     au lieu de clipper le texte. */
+  display: inline;
+  color: inherit;
+  background: none;
 }
 
 .hero__desc {
